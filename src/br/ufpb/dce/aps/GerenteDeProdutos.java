@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * U => Update
  * D => Delete
  * 
- * */
+ */
 public class GerenteDeProdutos {
 	ArrayList<Produto>	produtos	= new ArrayList<Produto>();
 	
