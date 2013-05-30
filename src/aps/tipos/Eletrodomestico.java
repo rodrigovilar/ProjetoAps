@@ -1,5 +1,11 @@
 package aps.tipos;
 
-public class Eletrodomestico {
+import aps.padrao.Produto;
+
+public class Eletrodomestico extends Produto {
+
+	public Eletrodomestico(int c) {
+		super(c);
+	}
 	
 }

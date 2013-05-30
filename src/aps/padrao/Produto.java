@@ -2,19 +2,13 @@ package aps.padrao;
 
 public abstract class Produto {
 	private int codigo;
-
-	/**
-	 * @return the codigo
-	 */
+	public Produto(int c){
+		this.setCodigo(c);
+	}
 	public int getCodigo() {
 		return codigo;
 	}
-
-	/**
-	 * @param codigo the codigo to set
-	 */
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	
 }
