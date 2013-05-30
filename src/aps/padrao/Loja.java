@@ -1,4 +1,5 @@
-package aps;
+package aps.padrao;
+
 
 public class Loja {
 	private Estoque	estoque;

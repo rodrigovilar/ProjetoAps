@@ -1,4 +1,4 @@
-package aps.data;
+package aps.tipos;
 
 public class Informatica {
 	

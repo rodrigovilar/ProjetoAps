@@ -1,4 +1,4 @@
-package aps;
+package aps.padrao;
 
 public abstract class Produto {
 	private int codigo;
