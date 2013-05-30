@@ -4,6 +4,10 @@ public class Produto {
 	private int			codigo;
 	private String	nome;
 	
+	public Produto (int c, String nome){
+		this.codigo = c;
+		this.nome = nome;
+	}
 	public int getCodigo() {
 		return codigo;
 	}
