@@ -57,4 +57,8 @@ public class Produto {
 			return false;
 		}
 	}
+	
+	public String toString() {
+		return getCodigo() + " " + getNome();
+	}
 }
