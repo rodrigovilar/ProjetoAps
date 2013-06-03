@@ -1,4 +1,4 @@
-package br.ufpb.dce.aps;
+package br.ufpb.dce.aps.v1;
 
 public class Produto {
 	private int			codigo;

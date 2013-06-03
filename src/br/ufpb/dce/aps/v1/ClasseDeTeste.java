@@ -1,4 +1,4 @@
-package br.ufpb.dce.aps;
+package br.ufpb.dce.aps.v1;
 
 import org.junit.Before;
 import org.junit.Test;
