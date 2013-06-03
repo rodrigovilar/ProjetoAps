@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+// linha
 public class ClasseDeTeste {
 	GerenteDeProdutos	g;
 	
