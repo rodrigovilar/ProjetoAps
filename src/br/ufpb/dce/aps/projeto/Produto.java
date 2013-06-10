@@ -1,4 +1,5 @@
 package br.ufpb.dce.aps.projeto;
+
 public class Produto {
 
 	private String nome;
@@ -31,5 +32,7 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	
+	public String toString() {
+		return this.nome + " " + this.codigo + "\n";
+	}
 }

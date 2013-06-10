@@ -38,9 +38,22 @@ public class TesteProduto {
 
 	@Test
 	public void addProdutoNaLista() {
+		this.criaProduto();
 		cp.cadastrarProduto(p.getNome(), p.getCodigo(), p.getPreco());
 		assertEquals(p.getNome(), cp.buscarProduto(p.getCodigo()).getNome());
 
 	}
 
+	@Test
+	public void exibirEstoqueDeProdutos() {
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		this.addProdutoNaLista();
+		System.out.println(cp.exibirEstoqueDeProdutos());
+	}
 }

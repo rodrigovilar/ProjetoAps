@@ -34,7 +34,7 @@ public class ControleProduto {
 		return null;
 	}
 
-	public List exibirEstoqueDeProdutos() {
+	public List<Produto> exibirEstoqueDeProdutos() {
 		return this.estoque;
 	}
 
