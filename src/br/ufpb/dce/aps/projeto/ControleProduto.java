@@ -1,28 +1,41 @@
 package br.ufpb.dce.aps.projeto;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ControleProduto {
 
-	private Estoque estoque;
+	private List <Produto> estoque = new LinkedList<Produto>();
+	private Produto p;
 
 	public void cadastrarProduto(String nome, int cod, float preco) {
-
+		p = new Produto();
+		p.setNome(nome);
+		p.setPreco(preco);
+		p.setCodigo(cod);
+		this.estoque.add(p);
 	}
 
-	public Produto removerProduto(int cod) {
-		return null;
+	public boolean removerProduto(int cod) {
+		Produto p = this.buscarProduto(cod) ;
+		if(p != null){
+			this.estoque.remove(p);
+			return true;
+		} return false;
 	}
 
 	public void adicionarProduto(int cod, int quant) {
-
+		//  ????????????????????
 	}
 
-	public void buscarProduto(int cod) {
-
-	}
-
-	public List exibirEstoqueDeProdutos(Estoque estoque) {
+	public Produto buscarProduto(int cod) {
+		for(Produto p : estoque)
+			if(p.getCodigo()==cod)
+				return p;
 		return null;
+	}
+
+	public List exibirEstoqueDeProdutos() {
+		return this.estoque;
 	}
 
 }
