@@ -13,15 +13,22 @@ public class ControleProduto {
 	public void cadastrarProduto(String nome, int cod, float preco)
 			throws ProdutoJaCadastradoException {
 		p = new Produto();
-		if (null != this.buscarProduto(cod)) {
-			if (cod != this.buscarProduto(cod).getCodigo()) {
-				p.setNome(nome);
-				p.setPreco(preco);
-				p.setCodigo(cod);
-				this.estoque.add(p);
-			}
-		} else
+		// se lista vazia
+		if (null == this.buscarProduto(cod)) {
+			p.setNome(nome);
+			p.setPreco(preco);
+			p.setCodigo(cod);
+			this.estoque.add(p);
+			// se lista não vazia, busque o código dos produtos já existentes
+		} else if (cod != this.buscarProduto(cod).getCodigo()) {
+			p.setNome(nome);
+			p.setPreco(preco);
+			p.setCodigo(cod);
+			this.estoque.add(p);
+			// se produto ja existe
+		} else {
 			throw new ProdutoJaCadastradoException();
+		}
 	}
 
 	public boolean removerProduto(int cod) {
