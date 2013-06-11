@@ -10,22 +10,37 @@ import br.ufpb.dce.aps.controles.ControleVendedor;
 
 public class FachadaFiado {
 
-	private ControleVendas controlVenda;
+	private ControleVendas controlVenda =  new ControleVendas();
 
-	private ControleCliente controlCliente;
+	private ControleCliente controlCliente = new ControleCliente();
 
-	private ControleVendedor controlVendedor;
+	private ControleVendedor controlVendedor =  new ControleVendedor();
 
 	private ControleProduto controlProd = new ControleProduto();
 
-	private ControleNotificacao controlNot;
+	private ControleNotificacao controlNot = new ControleNotificacao();
 
-	private ControleContas controlCont;
+	private ControleContas controlCont = new ControleContas();
 
-	private ControleCadastro controlCadas;
+	private ControleCadastro controlCadas = new ControleCadastro();
 	
 	public ControleProduto controleProdutos(){
 		return this.controlProd; 
+	}
+
+	private ControleCadastro ControleCadastro() {
+		// TODO Auto-generated method stub
+		return controlCadas;
+	}
+
+	private ControleContas ControleContas() {
+		// TODO Auto-generated method stub
+		return controlCont;
+	}
+
+	private ControleNotificacao ControleNotificacao() {
+		// TODO Auto-generated method stub
+		return controlNot;
 	}
 
 }
