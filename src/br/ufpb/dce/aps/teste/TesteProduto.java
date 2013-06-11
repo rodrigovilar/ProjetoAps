@@ -8,56 +8,53 @@ import org.junit.Test;
 import br.ufpb.dce.aps.controles.ControleProduto;
 import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
+import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 
 public class TesteProduto {
-	Produto p;
-	ControleProduto cp;
+	
+	//valor abaixo feito para ser setado ao produto no setCodigo
+	public static final int codigoDefault = 1;
+	
+	// valor abaixo feito para ser 
+	public static final int precoDefault = 40;
+	
+	FachadaFiado ff ;
 
 	@Before
 	public void setUp() {
-		p = new Produto();
-		cp = new ControleProduto();
+		ff = new FachadaFiado();
+		try {
+			ff.controleProdutos().cadastrarProduto("Vinicius", this.codigoDefault, 40);
+		} catch (ProdutoJaCadastradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void criaProduto() {
-		p.setCodigo(1);
-		p.setNome("Vinicius");
-		p.setPreco(40);
-		assertEquals(1, p.getCodigo());
+		assertEquals(1, ff.controleProdutos().buscarProduto(this.codigoDefault).getCodigo());
+			
 	}
 
 	@Test
 	public void verSeProdutoTemNome() {
-		p.setCodigo(1);
-		p.setNome("Vinicius");
-		p.setPreco(40);
-		assertEquals("Vinicius", p.getNome());
+		assertEquals("Vinicius", ff.controleProdutos().buscarProduto(this.codigoDefault).getNome());
 	}
 
+	
 	@Test
 	public void verificaPrecoDoProduto() {
-		p.setCodigo(1);
-		p.setNome("Vinicius");
-		p.setPreco(40);
-		assertEquals(40, p.getPreco(), 0.1);
+		
 	}
 
 	@Test
 	public void addProdutoNaLista() {
-		p.setCodigo(1);
-		p.setNome("Vinicius");
-		p.setPreco(40);
-		try {
-			cp.cadastrarProduto(p.getNome(), p.getCodigo(), p.getPreco());
-		} catch (ProdutoJaCadastradoException e) {
-			e.printStackTrace();
-		}
-		//assertEquals(p.getNome(), cp.buscarProduto(p.getCodigo()).getNome());
+	
 	}
 
 	public void exibirEstoqueDeProdutos() {
-		System.out.println(cp.exibirEstoqueDeProdutos());
+		
 	}
 }
