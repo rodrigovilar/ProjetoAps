@@ -21,6 +21,9 @@ public class TesteProduto {
 	
 	FachadaFiado ff ;
 
+	/**
+	 * ja cadastro um produto aki no before
+	 */
 	@Before
 	public void setUp() {
 		ff = new FachadaFiado();
@@ -33,7 +36,7 @@ public class TesteProduto {
 	}
 
 	@Test
-	public void criaProduto() {
+	public void verSeOProdutoEstaCadastrado() {
 		assertEquals(1, ff.controleProdutos().buscarProduto(this.codigoDefault).getCodigo());
 			
 	}
@@ -47,6 +50,10 @@ public class TesteProduto {
 	@Test
 	public void verificaPrecoDoProduto() {
 		assertEquals(40, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
+	}
+	@Test
+	public void verificaSeRemoveProduto(){
+		assertEquals(true,ff.controleProdutos().removerProduto(this.codigoDefault));
 	}
 
 
