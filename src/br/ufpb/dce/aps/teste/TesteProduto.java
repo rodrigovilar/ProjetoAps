@@ -5,8 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.ufpb.dce.aps.controles.ControleProduto;
+import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
-import br.ufpb.dce.aps.projeto.*;
+
 
 public class TesteProduto {
 	Produto p;
