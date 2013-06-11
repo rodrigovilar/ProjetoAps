@@ -40,9 +40,7 @@ public class ControleProduto {
 		return false;
 	}
 
-	public void adicionarProduto(int cod, int quant) {
-		// ????????????????????
-	}
+	
 
 	public Produto buscarProduto(int cod) {
 		for (Produto p : estoque)
