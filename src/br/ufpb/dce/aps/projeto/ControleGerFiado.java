@@ -7,12 +7,16 @@ public class ControleGerFiado {
 
 	private ControleVendedor controlVendedor;
 
-	private ControleProduto controlProd;
+	private ControleProduto controlProd = new ControleProduto();
 
 	private ControleNotificacao controlNot;
 
 	private ControleContas controlCont;
 
 	private ControleCadastro controlCadas;
+	
+	public ControleProduto controleProdutos(){
+		return this.controlProd; 
+	}
 
 }
