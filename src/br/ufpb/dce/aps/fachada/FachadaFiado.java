@@ -28,19 +28,26 @@ public class FachadaFiado {
 		return this.controlProd; 
 	}
 
-	private ControleCadastro ControleCadastro() {
+	public ControleCadastro ControleCadastro() {
 		// TODO Auto-generated method stub
-		return controlCadas;
+		return this.controlCadas;
 	}
 
-	private ControleContas ControleContas() {
+	public ControleContas ControleContas() {
 		// TODO Auto-generated method stub
-		return controlCont;
+		return this.controlCont;
 	}
 
-	private ControleNotificacao ControleNotificacao() {
+	public ControleNotificacao ControleNotificacao() {
 		// TODO Auto-generated method stub
-		return controlNot;
+		return this.controlNot;
+	}
+	public ControleCliente ControleCliente(){
+		return this.controlCliente;
+		
+	}
+	public ControleVendas ControleVenda(){
+		return this.controlVenda;
 	}
 
 }
