@@ -25,7 +25,7 @@ public class TesteProduto {
 	public void setUp() {
 		ff = new FachadaFiado();
 		try {
-			ff.controleProdutos().cadastrarProduto("Vinicius", this.codigoDefault, 40);
+			ff.controleProdutos().cadastrarProduto("Vinicius", this.codigoDefault, this.precoDefault);
 		} catch (ProdutoJaCadastradoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,15 +46,8 @@ public class TesteProduto {
 	
 	@Test
 	public void verificaPrecoDoProduto() {
-		
+		assertEquals(40, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
 	}
 
-	@Test
-	public void addProdutoNaLista() {
-	
-	}
 
-	public void exibirEstoqueDeProdutos() {
-		
-	}
 }
