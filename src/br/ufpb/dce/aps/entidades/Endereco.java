@@ -34,11 +34,11 @@ public class Endereco {
 		this.referencia = referencia;
 	}
 
-	public short getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(short numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 

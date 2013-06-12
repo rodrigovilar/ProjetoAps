@@ -21,12 +21,12 @@ public class ControleCliente {
 		if (null == this.buscarCliente(cpf)) {
 			p.setNome(nome);
 			p.setEndereco(e);
-			p.setCpf(cpf);
+			p.setCPF(cpf);
 			this.clientes.add(p);
 	}else if (cpf != this.buscarCliente(cpf).getCpf()) {
 		p.setNome(nome);
 		p.setEndereco(e);
-		p.setCpf(cpf);
+		p.setCPF(cpf);
 		this.clientes.add(p);
 	}
 
