@@ -7,4 +7,9 @@ public class Cliente extends Pessoa {
 
 	private Conta conta;
 
+	public void setCpf(String cpf) {
+		this.cpf=cpf;
+		
+	}
+
 }

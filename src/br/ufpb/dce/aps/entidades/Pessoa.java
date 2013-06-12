@@ -10,6 +10,7 @@ public class Pessoa {
 	private Documento documento;
 
 	private String telefone;
+	private String cpf;
 
 	public String getNome() {
 		return nome;
@@ -41,6 +42,10 @@ public class Pessoa {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public String getCpf(){
+		return this.cpf;
 	}
 	
 
