@@ -6,11 +6,11 @@ public class Endereco {
 
 	private String referencia;
 
-	private int numero;
+	private String numero;
 
 	private String bairro;
 
-	public Endereco(int numero, String rua, String bairro, String referencia) {
+	public Endereco(String numero, String rua, String bairro, String referencia) {
 		this.referencia=referencia;
 		this.rua=rua;
 		this.bairro=bairro;
@@ -34,11 +34,11 @@ public class Endereco {
 		this.referencia = referencia;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

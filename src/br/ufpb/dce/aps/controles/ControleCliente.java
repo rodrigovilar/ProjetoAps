@@ -6,6 +6,7 @@ import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Documento;
 import br.ufpb.dce.aps.entidades.Endereco;
 import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 
 public class ControleCliente {
 
@@ -14,7 +15,8 @@ public class ControleCliente {
 	private Endereco e;
 
 
-	public void cadastrarCliente(int numero, String nome, String rua, String bairro, int telefone, String referencia, String cpf) {
+	public void cadastrarCliente(String numero, String nome, String rua, String bairro, 
+			String telefone, String referencia, String cpf) throws ClienteJaCadastradoException{
 		p = new Cliente();
 		e = new Endereco(numero, rua, bairro, referencia);
 		// se lista vazia
@@ -23,29 +25,32 @@ public class ControleCliente {
 			p.setEndereco(e);
 			p.setCPF(cpf);
 			this.clientes.add(p);
-	}else if (cpf != this.buscarCliente(cpf).getCpf()) {
-		p.setNome(nome);
-		p.setEndereco(e);
-		p.setCPF(cpf);
-		this.clientes.add(p);
-	}
+			// se lista não vazia, descubra se o cliente ja existe
+		}else if (cpf != this.buscarCliente(cpf).getCpf()) {
+			p.setNome(nome);
+			p.setEndereco(e);
+			p.setCPF(cpf);
+			this.clientes.add(p);
+		}
+		//se ja existe
+		else throw new ClienteJaCadastradoException();
 
-	
+
 	}
 	public Cliente buscarCliente(String cpf) {
 		for (Cliente p : clientes)
-			if (p.getCpf() == cpf)
+			if (p.getCPF() == cpf)
 				return p;
 		return null;
 	}
 
-	
+
 
 	public void exibirDados(Cliente cliente) {
 
 	}
 
-	
-		
-	}
+
+
+}
 

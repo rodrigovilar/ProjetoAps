@@ -20,7 +20,7 @@ public class ControleProduto {
 			p.setPreco(preco);
 			p.setCodigo(cod);
 			this.estoque.add(p);
-			// se lista não vazia, busque o código dos produtos já existentes
+			// se lista não vazia, cheque se os produtos já existente
 		} else if (cod != this.buscarProduto(cod).getCodigo()) {
 			p.setNome(nome);
 			p.setPreco(preco);

@@ -19,7 +19,7 @@ import org.junit.Test;
 
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
-public class TesteClienteTest {
+public class TesteCliente {
 
 	@Test
 	public void testeCadastraCliente(){
