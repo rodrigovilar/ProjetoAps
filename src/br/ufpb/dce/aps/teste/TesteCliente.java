@@ -46,8 +46,20 @@ public class TesteCliente {
 	}
 
 	@Test
-	public void testeClienteCadastrado(){
+	public void testeNomeDoCliente(){
 		assertEquals(this.NOME, ff.ControleCliente().buscarCliente(this.CPF).getNome());
 	}
+	
+	@Test
+	public void testeCPFdoCliente(){
+		assertEquals(this.CPF, ff.ControleCliente().buscarCliente(this.CPF).getCPF());
+	}
+	
+	
+	@Test
+	public void testeClienteRemovido(){
+		assertEquals(true, ff.ControleCliente().removerCliente(this.CPF));
+	}
+	
 
 }

@@ -46,7 +46,13 @@ public class ControleCliente {
 
 
 
-	public void exibirDados(Cliente cliente) {
+	public boolean removerCliente(String CPF) {
+		Cliente c = this.buscarCliente(CPF);
+		if (c != null){
+			this.clientes.remove(c);
+			return true;
+		}
+		return false;
 
 	}
 
