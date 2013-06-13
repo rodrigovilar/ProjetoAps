@@ -16,19 +16,22 @@ public class TesteProduto {
 	//valor abaixo feito para ser setado ao produto no setCodigo
 	public static final int codigoDefault = 1;
 	
+	//nome do produto
+	public static final String nomeDoProduto = "Sifu";
+	
 	// valor abaixo feito para ser 
 	public static final int precoDefault = 40;
 	
 	FachadaFiado ff ;
 
 	/**
-	 * ja cadastro um produto aki no before
+	 * ja cadastro um produto aki no before. Isso simplifica os testes
 	 */
 	@Before
 	public void setUp() {
 		ff = new FachadaFiado();
 		try {
-			ff.controleProdutos().cadastrarProduto("Vinicius", this.codigoDefault, this.precoDefault);
+			ff.controleProdutos().cadastrarProduto(this.nomeDoProduto, this.codigoDefault, this.precoDefault);
 		} catch (ProdutoJaCadastradoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,13 +46,13 @@ public class TesteProduto {
 
 	@Test
 	public void verSeProdutoTemNome() {
-		assertEquals("Vinicius", ff.controleProdutos().buscarProduto(this.codigoDefault).getNome());
+		assertEquals(this.nomeDoProduto, ff.controleProdutos().buscarProduto(this.codigoDefault).getNome());
 	}
 
 	
 	@Test
 	public void verificaPrecoDoProduto() {
-		assertEquals(40, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
+		assertEquals(this.precoDefault, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
 	}
 	@Test
 	public void verificaSeRemoveProduto(){
