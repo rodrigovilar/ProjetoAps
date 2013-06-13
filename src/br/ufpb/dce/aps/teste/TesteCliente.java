@@ -76,5 +76,13 @@ public class TesteCliente {
 		assertEquals(true, ff.ControleCliente().removerCliente(this.CPF));
 	}
 	
+	@Test
+	public void testeBairroDoCliente(){
+		assertEquals(this.BAIRRO,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getBairro());
+	}
+	
+	public void testaReferenciaDoCliente(){
+		assertEquals(this.REFERENCIA,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getReferencia());
+	}
 
 }
