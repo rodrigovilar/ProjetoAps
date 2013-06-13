@@ -24,12 +24,24 @@ public class ControleCliente {
 			p.setNome(nome);
 			p.setEndereco(e);
 			p.setCPF(cpf);
+			p.setTelefone(telefone);
+			e.setBairro(bairro);
+			e.setNumero(numero);
+			e.setReferencia(referencia);
+			e.setRua(rua);
+			p.setEndereco(e);
 			this.clientes.add(p);
 			// se lista não vazia, descubra se o cliente ja existe
 		}else if (cpf != this.buscarCliente(cpf).getCpf()) {
 			p.setNome(nome);
 			p.setEndereco(e);
 			p.setCPF(cpf);
+			p.setTelefone(telefone);
+			e.setBairro(bairro);
+			e.setNumero(numero);
+			e.setReferencia(referencia);
+			e.setRua(rua);
+			p.setEndereco(e);
 			this.clientes.add(p);
 		}
 		//se ja existe

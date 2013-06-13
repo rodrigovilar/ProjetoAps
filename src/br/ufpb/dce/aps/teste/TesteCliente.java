@@ -55,6 +55,21 @@ public class TesteCliente {
 		assertEquals(this.CPF, ff.ControleCliente().buscarCliente(this.CPF).getCPF());
 	}
 	
+	@Test
+	public void testeTelefoneDoCliente(){
+		assertEquals(this.TELEFONE,ff.ControleCliente().buscarCliente(this.CPF).getTelefone());
+	}
+	
+	@Test
+	public void testeRuaDoCliente(){
+		assertEquals(this.RUA, ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getRua());
+	}
+	
+	@Test
+	public void testeNumeroDaCadaDoCliente(){
+		assertEquals(this.NUMERO,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getNumero());
+	}
+	
 	
 	@Test
 	public void testeClienteRemovido(){
