@@ -20,7 +20,7 @@ public class TesteProduto {
 	private String nomeDoProduto ;
 	
 	// valor abaixo feito para ser 
-	private int precoDefault ;
+	private float precoDefault ;
 	
 	FachadaFiado ff ;
 
@@ -34,33 +34,29 @@ public class TesteProduto {
 		this.precoDefault = 200;
 		
 		ff = new FachadaFiado();
-		try {
-			ff.controleProdutos().cadastrarProduto(this.nomeDoProduto, this.codigoDefault, this.precoDefault);
-		} catch (ProdutoJaCadastradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault, this.precoDefault);
+		
 	}
 
 	@Test
 	public void verSeOProdutoEstaCadastrado() {
-		assertEquals(1, ff.controleProdutos().buscarProduto(this.codigoDefault).getCodigo());
+		assertEquals(1, ff.buscarProduto(this.codigoDefault).getCodigo());
 			
 	}
 
 	@Test
 	public void verSeProdutoTemNome() {
-		assertEquals(this.nomeDoProduto, ff.controleProdutos().buscarProduto(this.codigoDefault).getNome());
+		assertEquals(this.nomeDoProduto, ff.buscarProduto(this.codigoDefault).getNome());
 	}
 
 	
 	@Test
 	public void verificaPrecoDoProduto() {
-		assertEquals(this.precoDefault, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
+		assertEquals(this.precoDefault, ff.buscarProduto(this.codigoDefault).getPreco(),0.1);
 	}
 	@Test
 	public void verificaSeRemoveProduto(){
-		assertEquals(true,ff.controleProdutos().removerProduto(this.codigoDefault));
+		assertEquals(true,ff.removerProduto(this.codigoDefault));
 	}
 
 

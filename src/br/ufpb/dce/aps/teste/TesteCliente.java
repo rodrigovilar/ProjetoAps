@@ -44,53 +44,50 @@ public class TesteCliente {
 		cpf = "098765432-12";
 		nome = "Vinicius";
 		
-		try {
-			// cadastrando cliente
-			ff.ControleCliente().cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
-		} catch (ClienteJaCadastradoException e) {
-			e.printStackTrace();
-		}
+		// cadastrando cliente
+		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
+		
 	}
 
 	@Test
 	public void testeNomeDoCliente(){
-		assertEquals(this.nome, ff.ControleCliente().buscarCliente(this.cpf).getNome());
+		assertEquals(this.nome, ff.buscarCliente(this.cpf).getNome());
 	}
 	
 	@Test
 	public void testeCPFdoCliente(){
-		assertEquals(this.cpf, ff.ControleCliente().buscarCliente(this.cpf).getCPF());
+		assertEquals(this.cpf, ff.buscarCliente(this.cpf).getCPF());
 	}
 	
 	@Test
 	public void testeTelefoneDoCliente(){
-		assertEquals(this.telefone,ff.ControleCliente().buscarCliente(this.cpf).getTelefone());
+		assertEquals(this.telefone,ff.buscarCliente(this.cpf).getTelefone());
 	}
 	
 	@Test
 	public void testeRuaDoCliente(){
-		assertEquals(this.rua, ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getRua());
+		assertEquals(this.rua, ff.buscarCliente(this.cpf).getEndereco().getRua());
 	}
 	
 	@Test
 	public void testeNumeroDaCadaDoCliente(){
-		assertEquals(this.numero,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getNumero());
+		assertEquals(this.numero,ff.buscarCliente(this.cpf).getEndereco().getNumero());
 	}
 	
 	
 	@Test
 	public void testeClienteRemovido(){
-		assertEquals(true, ff.ControleCliente().removerCliente(this.cpf));
+		assertEquals(true, ff.removerCliente(this.cpf));
 	}
 	
 	@Test
 	public void testeBairroDoCliente(){
-		assertEquals(this.bairro,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getBairro());
+		assertEquals(this.bairro,ff.buscarCliente(this.cpf).getEndereco().getBairro());
 	}
 	
 	@Test
 	public void testaReferenciaDoCliente(){
-		assertEquals(this.referencia,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getReferencia());
+		assertEquals(this.referencia,ff.buscarCliente(this.cpf).getEndereco().getReferencia());
 	}
 
 }
