@@ -22,67 +22,75 @@ import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteCliente {
 
-	public FachadaFiado ff ;
-	// contantes para endereco e contato
-	public static final String BAIRRO = "centro";
-	public static final String RUA = "quintaAvenida";
-	public static final String NUMERO = "1000";
-	public static final String TELEFONE= "9999-9999";
-	public static final String REFERENCIA = "perto da farmacia";
-	public static final String CPF = "098765432-12";
-	public static final String NOME = "Vinicius";
+	private FachadaFiado ff ;
+	// contantes para endereco e contato	
+	private String bairro;
+	private String rua;
+	private String numero;
+	private String telefone;
+	private String referencia;
+	private String cpf;
+	private String nome;
 
 	@Before
 	public void setUp(){
 		ff= new FachadaFiado();
 
+		bairro = "centro";
+		rua = "quintaAvenida";
+		numero = "1000";
+		telefone= "9999-9999";
+		referencia = "perto da farmacia";
+		cpf = "098765432-12";
+		nome = "Vinicius";
+		
 		try {
 			// cadastrando cliente
-			ff.ControleCliente().cadastrarCliente(this.NUMERO, this.NOME, this.RUA,this.BAIRRO, this.TELEFONE, this.REFERENCIA, this.CPF);
+			ff.ControleCliente().cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
 		} catch (ClienteJaCadastradoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Test
 	public void testeNomeDoCliente(){
-		assertEquals(this.NOME, ff.ControleCliente().buscarCliente(this.CPF).getNome());
+		assertEquals(this.nome, ff.ControleCliente().buscarCliente(this.cpf).getNome());
 	}
 	
 	@Test
 	public void testeCPFdoCliente(){
-		assertEquals(this.CPF, ff.ControleCliente().buscarCliente(this.CPF).getCPF());
+		assertEquals(this.cpf, ff.ControleCliente().buscarCliente(this.cpf).getCPF());
 	}
 	
 	@Test
 	public void testeTelefoneDoCliente(){
-		assertEquals(this.TELEFONE,ff.ControleCliente().buscarCliente(this.CPF).getTelefone());
+		assertEquals(this.telefone,ff.ControleCliente().buscarCliente(this.cpf).getTelefone());
 	}
 	
 	@Test
 	public void testeRuaDoCliente(){
-		assertEquals(this.RUA, ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getRua());
+		assertEquals(this.rua, ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getRua());
 	}
 	
 	@Test
 	public void testeNumeroDaCadaDoCliente(){
-		assertEquals(this.NUMERO,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getNumero());
+		assertEquals(this.numero,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getNumero());
 	}
 	
 	
 	@Test
 	public void testeClienteRemovido(){
-		assertEquals(true, ff.ControleCliente().removerCliente(this.CPF));
+		assertEquals(true, ff.ControleCliente().removerCliente(this.cpf));
 	}
 	
 	@Test
 	public void testeBairroDoCliente(){
-		assertEquals(this.BAIRRO,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getBairro());
+		assertEquals(this.bairro,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getBairro());
 	}
 	
+	@Test
 	public void testaReferenciaDoCliente(){
-		assertEquals(this.REFERENCIA,ff.ControleCliente().buscarCliente(this.CPF).getEndereco().getReferencia());
+		assertEquals(this.referencia,ff.ControleCliente().buscarCliente(this.cpf).getEndereco().getReferencia());
 	}
 
 }

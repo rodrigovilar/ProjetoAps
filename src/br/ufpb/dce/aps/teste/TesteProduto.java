@@ -14,13 +14,13 @@ import br.ufpb.dce.aps.fachada.FachadaFiado;
 public class TesteProduto {
 	
 	//valor abaixo feito para ser setado ao produto no setCodigo
-	public static final int codigoDefault = 1;
+	private int codigoDefault ;
 	
 	//nome do produto
-	public static final String nomeDoProduto = "Sifu";
+	private String nomeDoProduto ;
 	
 	// valor abaixo feito para ser 
-	public static final int precoDefault = 40;
+	private int precoDefault ;
 	
 	FachadaFiado ff ;
 
@@ -29,6 +29,10 @@ public class TesteProduto {
 	 */
 	@Before
 	public void setUp() {
+		this.codigoDefault = 1;
+		this.nomeDoProduto = "Nal";
+		this.precoDefault = 200;
+		
 		ff = new FachadaFiado();
 		try {
 			ff.controleProdutos().cadastrarProduto(this.nomeDoProduto, this.codigoDefault, this.precoDefault);

@@ -11,38 +11,30 @@ import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 public class ControleCliente {
 
 	private List<Cliente> clientes = new LinkedList<Cliente>();
-	private Cliente p;
+	private Cliente c;
 	private Endereco e;
 
 
 	public void cadastrarCliente(String numero, String nome, String rua, String bairro, 
 			String telefone, String referencia, String cpf) throws ClienteJaCadastradoException{
-		p = new Cliente();
-		e = new Endereco(numero, rua, bairro, referencia);
+		c = new Cliente();
+
 		// se lista vazia
 		if (null == this.buscarCliente(cpf)) {
-			p.setNome(nome);
-			p.setEndereco(e);
-			p.setCPF(cpf);
-			p.setTelefone(telefone);
-			e.setBairro(bairro);
-			e.setNumero(numero);
-			e.setReferencia(referencia);
-			e.setRua(rua);
-			p.setEndereco(e);
-			this.clientes.add(p);
+			e = new Endereco(numero, rua, bairro, referencia);
+			c.setNome(nome);
+			c.setCPF(cpf);
+			c.setTelefone(telefone);
+			c.setEndereco(e);
+			this.clientes.add(c);
 			// se lista não vazia, descubra se o cliente ja existe
 		}else if (cpf != this.buscarCliente(cpf).getCpf()) {
-			p.setNome(nome);
-			p.setEndereco(e);
-			p.setCPF(cpf);
-			p.setTelefone(telefone);
-			e.setBairro(bairro);
-			e.setNumero(numero);
-			e.setReferencia(referencia);
-			e.setRua(rua);
-			p.setEndereco(e);
-			this.clientes.add(p);
+			e = new Endereco(numero, rua, bairro, referencia);
+			c.setNome(nome);
+			c.setCPF(cpf);
+			c.setTelefone(telefone);
+			c.setEndereco(e);
+			this.clientes.add(c);
 		}
 		//se ja existe
 		else throw new ClienteJaCadastradoException();
