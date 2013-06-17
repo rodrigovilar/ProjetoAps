@@ -2,7 +2,7 @@ package br.ufpb.dce.aps.fachada;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.controles.ControleCadastro;
+
 import br.ufpb.dce.aps.controles.ControleCliente;
 import br.ufpb.dce.aps.controles.ControleContas;
 import br.ufpb.dce.aps.controles.ControleNotificacao;
@@ -28,7 +28,7 @@ public class FachadaFiado {
 
 	private ControleContas controlCont ;
 
-	private ControleCadastro controlCadas ;
+	
 	
 	public FachadaFiado(){
 		this.controlVenda =  new ControleVendas();
@@ -37,7 +37,7 @@ public class FachadaFiado {
 		this.controlProd = new ControleProduto();
 		this.controlNot = new ControleNotificacao();
 		this.controlCont = new ControleContas();
-		this.controlCadas = new ControleCadastro();
+		
 		
 	}
 	// Controle de produtos
