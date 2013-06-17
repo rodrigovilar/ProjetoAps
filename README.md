@@ -5,4 +5,5 @@ Professor:
 ----------> Rodrigo Villar
 Estudantes:
 ----------> Marcos Vinicius
-----------> João Paulo
+----------> Joï¿½o Paulo
+----------> Gilvando Lucas
