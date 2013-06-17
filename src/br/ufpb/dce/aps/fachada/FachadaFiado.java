@@ -11,6 +11,7 @@ import br.ufpb.dce.aps.controles.ControleVendas;
 import br.ufpb.dce.aps.controles.ControleVendedor;
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.entidades.User;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 
@@ -80,6 +81,9 @@ public class FachadaFiado {
 	
 	public Cliente buscarCliente(String cpf){
 		return this.controlCliente.buscarCliente(cpf);
+	}
+	public boolean login(String username, String senha) {
+		return true;
 	}
 	
 
