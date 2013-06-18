@@ -1,5 +1,5 @@
 package br.ufpb.dce.aps.entidades;
-public class Login {
+public class User {
 
 	private String login;
 
