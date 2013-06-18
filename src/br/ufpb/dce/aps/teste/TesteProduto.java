@@ -14,46 +14,49 @@ import br.ufpb.dce.aps.fachada.FachadaFiado;
 public class TesteProduto {
 	
 	//valor abaixo feito para ser setado ao produto no setCodigo
-	public static final int codigoDefault = 1;
+	private int codigoDefault ;
+	
+	//nome do produto
+	private String nomeDoProduto ;
 	
 	// valor abaixo feito para ser 
-	public static final int precoDefault = 40;
+	private float precoDefault ;
 	
 	FachadaFiado ff ;
 
 	/**
-	 * ja cadastro um produto aki no before
+	 * ja cadastro um produto aki no before. Isso simplifica os testes
 	 */
 	@Before
 	public void setUp() {
+		this.codigoDefault = 1;
+		this.nomeDoProduto = "Nal";
+		this.precoDefault = 200;
+		
 		ff = new FachadaFiado();
-		try {
-			ff.controleProdutos().cadastrarProduto("Vinicius", this.codigoDefault, this.precoDefault);
-		} catch (ProdutoJaCadastradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault, this.precoDefault);
+		
 	}
 
 	@Test
 	public void verSeOProdutoEstaCadastrado() {
-		assertEquals(1, ff.controleProdutos().buscarProduto(this.codigoDefault).getCodigo());
+		assertEquals(1, ff.buscarProduto(this.codigoDefault).getCodigo());
 			
 	}
 
 	@Test
 	public void verSeProdutoTemNome() {
-		assertEquals("Vinicius", ff.controleProdutos().buscarProduto(this.codigoDefault).getNome());
+		assertEquals(this.nomeDoProduto, ff.buscarProduto(this.codigoDefault).getNome());
 	}
 
 	
 	@Test
 	public void verificaPrecoDoProduto() {
-		assertEquals(40, ff.controleProdutos().buscarProduto(this.codigoDefault).getPreco(),0.1);
+		assertEquals(this.precoDefault, ff.buscarProduto(this.codigoDefault).getPreco(),0.1);
 	}
 	@Test
 	public void verificaSeRemoveProduto(){
-		assertEquals(true,ff.controleProdutos().removerProduto(this.codigoDefault));
+		assertEquals(true,ff.removerProduto(this.codigoDefault));
 	}
 
 

@@ -14,4 +14,12 @@ public class ControleNotificacao {
 		return null;
 	}
 
+	public Notificacao getNotificacao() {
+		return notificacao;
+	}
+
+	public void setNotificacao(Notificacao notificacao) {
+		this.notificacao = notificacao;
+	}
+
 }

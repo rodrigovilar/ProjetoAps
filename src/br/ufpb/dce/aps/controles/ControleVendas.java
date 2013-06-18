@@ -7,7 +7,7 @@ import br.ufpb.dce.aps.entidades.Venda;
 
 public class ControleVendas {
 
-	private List listaVendas;
+	private List<Venda> listaVendas;
 
 	public void adicionarProdutoCliente(Venda venda, Cliente cliente, Produto prod) {
 
@@ -25,7 +25,7 @@ public class ControleVendas {
 
 	}
 
-	public List listarVendasRealizadas() {
+	public List<Venda> listarVendasRealizadas() {
 		return null;
 	}
 

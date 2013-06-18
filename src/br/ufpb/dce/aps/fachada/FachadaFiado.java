@@ -1,54 +1,109 @@
 package br.ufpb.dce.aps.fachada;
 
-import br.ufpb.dce.aps.controles.ControleCadastro;
+import java.util.List;
+
+
+import br.ufpb.dce.aps.controles.ControleAutenticacao;
 import br.ufpb.dce.aps.controles.ControleCliente;
 import br.ufpb.dce.aps.controles.ControleContas;
 import br.ufpb.dce.aps.controles.ControleNotificacao;
 import br.ufpb.dce.aps.controles.ControleProduto;
 import br.ufpb.dce.aps.controles.ControleVendas;
 import br.ufpb.dce.aps.controles.ControleVendedor;
+import br.ufpb.dce.aps.entidades.Cliente;
+import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.entidades.User;
+import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
+import br.ufpb.dce.aps.exception.PasswordInvalidException;
+import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
+import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class FachadaFiado {
 
-	private ControleVendas controlVenda =  new ControleVendas();
+	private ControleVendas controlVenda ;
 
-	private ControleCliente controlCliente = new ControleCliente();
+	private ControleCliente controlCliente ;
 
-	private ControleVendedor controlVendedor =  new ControleVendedor();
+	private ControleVendedor controlVendedor ;
 
-	private ControleProduto controlProd = new ControleProduto();
+	private ControleProduto controlProd ;
 
-	private ControleNotificacao controlNot = new ControleNotificacao();
+	private ControleNotificacao controlNot ;
 
-	private ControleContas controlCont = new ControleContas();
+	private ControleContas controlCont ;
 
-	private ControleCadastro controlCadas = new ControleCadastro();
+	private ControleAutenticacao auth;
 	
-	public ControleProduto controleProdutos(){
-		return this.controlProd; 
+	public FachadaFiado(){
+		this.controlVenda =  new ControleVendas();
+		this.controlCliente = new ControleCliente();
+		this.controlVendedor = new ControleVendedor();
+		this.controlProd = new ControleProduto();
+		this.controlNot = new ControleNotificacao();
+		this.controlCont = new ControleContas();
+		this.auth = new ControleAutenticacao();
+		
+	}
+	// Controle de produtos
+	public void cadastrarProduto(String nome, int cod, float preco){
+		try {
+			this.controlProd.cadastrarProduto(nome, cod, preco);
+		} catch (ProdutoJaCadastradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public Produto buscarProduto(int cod){
+		return this.controlProd.buscarProduto(cod);
+	}
+	
+	public boolean removerProduto(int cod){
+		return this.controlProd.removerProduto(cod);
 	}
 
-	public ControleCadastro ControleCadastro() {
-		// TODO Auto-generated method stub
-		return this.controlCadas;
+	public List<Produto> exibirEstoqueDeProdutos(){
+		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-
-	public ControleContas ControleContas() {
-		// TODO Auto-generated method stub
-		return this.controlCont;
-	}
-
-	public ControleNotificacao ControleNotificacao() {
-		// TODO Auto-generated method stub
-		return this.controlNot;
-	}
+<<<<<<< HEAD
 	public ControleCliente ControleCliente1(){
 		return this.controlCliente;
 		
+=======
+	
+	
+	// controle de clientes
+	
+	public void cadastrarCliente(String numero, String nome, String rua, String bairro, String telefone, String referencia, String cpf){
+		 try {
+			this.controlCliente.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
+		} catch (ClienteJaCadastradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	public ControleVendas ControleVenda(){
-		return this.controlVenda;
+	
+	public boolean removerCliente(String cpf){
+		return this.controlCliente.removerCliente(cpf);
 	}
+	
+	public Cliente buscarCliente(String cpf){
+		return this.controlCliente.buscarCliente(cpf);
+>>>>>>> d0c2544f578c01b6ee353354489d953d5148c200
+	}
+	public boolean login(String username, String password) {
+		try {
+			return auth.login(username, password);
+		}
+		catch (UsernameInvalidException e) {
+			e.printStackTrace();
+		}
+		catch (PasswordInvalidException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 
 	public ControleCliente ControleCliente() {
 		// TODO Auto-generated method stub

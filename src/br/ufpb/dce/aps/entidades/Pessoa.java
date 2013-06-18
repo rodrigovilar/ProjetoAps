@@ -4,11 +4,7 @@ package br.ufpb.dce.aps.entidades;
 public class Pessoa {
 
 	private String nome;
-
 	private Endereco endereco;
-
-	private Documento documento;
-
 	private String telefone;
 	private String cpf;
 
@@ -28,13 +24,6 @@ public class Pessoa {
 		this.endereco = endereco;
 	}
 
-	public Documento getDocumento() {
-		return documento;
-	}
-
-	public void setDocumento(Documento documento) {
-		this.documento = documento;
-	}
 
 	public String getTelefone() {
 		return telefone;
