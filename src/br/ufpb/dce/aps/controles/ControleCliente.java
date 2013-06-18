@@ -35,7 +35,7 @@ public class ControleCliente {
 			this.clientes.add(c);
 		}
 		//se ja existe
-		else throw new ClienteJaCadastradoException();
+		else throw new ClienteJaCadastradoException("Cliente exception");
 
 
 	}
