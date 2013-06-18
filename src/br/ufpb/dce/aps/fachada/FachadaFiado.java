@@ -3,6 +3,7 @@ package br.ufpb.dce.aps.fachada;
 import java.util.List;
 
 
+import br.ufpb.dce.aps.controles.ControleAutenticacao;
 import br.ufpb.dce.aps.controles.ControleCliente;
 import br.ufpb.dce.aps.controles.ControleContas;
 import br.ufpb.dce.aps.controles.ControleNotificacao;
@@ -11,8 +12,11 @@ import br.ufpb.dce.aps.controles.ControleVendas;
 import br.ufpb.dce.aps.controles.ControleVendedor;
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.entidades.User;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
+import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
+import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class FachadaFiado {
 
@@ -28,7 +32,7 @@ public class FachadaFiado {
 
 	private ControleContas controlCont ;
 
-	
+	private ControleAutenticacao auth;
 	
 	public FachadaFiado(){
 		this.controlVenda =  new ControleVendas();
@@ -37,7 +41,7 @@ public class FachadaFiado {
 		this.controlProd = new ControleProduto();
 		this.controlNot = new ControleNotificacao();
 		this.controlCont = new ControleContas();
-		
+		this.auth = new ControleAutenticacao();
 		
 	}
 	// Controle de produtos
@@ -80,6 +84,18 @@ public class FachadaFiado {
 	
 	public Cliente buscarCliente(String cpf){
 		return this.controlCliente.buscarCliente(cpf);
+	}
+	public boolean login(String username, String password) {
+		try {
+			return auth.login(username, password);
+		}
+		catch (UsernameInvalidException e) {
+			e.printStackTrace();
+		}
+		catch (PasswordInvalidException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 

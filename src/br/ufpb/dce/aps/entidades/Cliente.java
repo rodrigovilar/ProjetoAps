@@ -1,9 +1,11 @@
 package br.ufpb.dce.aps.entidades;
 
+import java.util.Date;
+
 
 public class Cliente extends Pessoa {
 
-	private Data dataCobranca;
+	private Date dataCobranca;
 	private String CPF;
 	private Conta conta;
 
@@ -12,11 +14,11 @@ public class Cliente extends Pessoa {
 		
 	}
 
-	public Data getDataCobranca() {
+	public Date getDataCobranca() {
 		return dataCobranca;
 	}
 
-	public void setDataCobranca(Data dataCobranca) {
+	public void setDataCobranca(Date dataCobranca) {
 		this.dataCobranca = dataCobranca;
 	}
 

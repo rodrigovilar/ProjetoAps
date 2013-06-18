@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ControleContas {
 
-	public List exibirContasReceber() {
+	public List<Object> exibirContasReceber() {
 		return null;
 	}
 
