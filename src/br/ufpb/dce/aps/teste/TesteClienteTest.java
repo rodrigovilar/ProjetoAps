@@ -24,7 +24,7 @@ public class TesteClienteTest {
 	@Test
 	public void testeCadastraCliente(){
 		FachadaFiado ff = new FachadaFiado();
-		ff.ControleCliente().cadastrarCliente(91, "joao", "antonio diogo", "novo", 333, "praca", "999");
+	//	ff.ControleCliente().cadastrarCliente(91, "joao", "antonio diogo", "novo", 333, "praca", "999");
 		assertEquals("joao",ff.ControleCliente().buscarCliente("999").getNome());
 		assertEquals("antonio diogo",ff.ControleCliente().buscarCliente("999").getEndereco().getRua());
 		assertEquals("novo",ff.ControleCliente().buscarCliente("999").getEndereco().getBairro());

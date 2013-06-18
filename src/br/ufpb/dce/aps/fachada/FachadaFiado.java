@@ -65,20 +65,13 @@ public class FachadaFiado {
 	public List<Produto> exibirEstoqueDeProdutos(){
 		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-<<<<<<< HEAD
-	public ControleCliente ControleCliente1(){
-		return this.controlCliente;
-		
-=======
+
 	
-	
-	// controle de clientes
-	
+	// controle de clientes	
 	public void cadastrarCliente(String numero, String nome, String rua, String bairro, String telefone, String referencia, String cpf){
 		 try {
 			this.controlCliente.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
 		} catch (ClienteJaCadastradoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -89,7 +82,7 @@ public class FachadaFiado {
 	
 	public Cliente buscarCliente(String cpf){
 		return this.controlCliente.buscarCliente(cpf);
->>>>>>> d0c2544f578c01b6ee353354489d953d5148c200
+
 	}
 	public boolean login(String username, String password) {
 		try {
