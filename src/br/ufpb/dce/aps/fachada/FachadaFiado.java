@@ -42,12 +42,17 @@ public class FachadaFiado {
 		// TODO Auto-generated method stub
 		return this.controlNot;
 	}
-	public ControleCliente ControleCliente(){
+	public ControleCliente ControleCliente1(){
 		return this.controlCliente;
 		
 	}
 	public ControleVendas ControleVenda(){
 		return this.controlVenda;
+	}
+
+	public ControleCliente ControleCliente() {
+		// TODO Auto-generated method stub
+	 return this.controlCliente;
 	}
 
 }
