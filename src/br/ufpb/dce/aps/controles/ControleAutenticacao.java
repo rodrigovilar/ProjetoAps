@@ -1,12 +1,13 @@
 package br.ufpb.dce.aps.controles;
 
+import br.ufpb.dce.aps.entidades.Session;
 import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class ControleAutenticacao {
 	
-	public boolean login(String username, String password) throws UsernameInvalidException, PasswordInvalidException{
-		return true;
+	public Session login(String username, String password) throws UsernameInvalidException, PasswordInvalidException{
+		return null;
 	}
 	
 }
