@@ -65,11 +65,6 @@ public class FachadaFiado {
 	public List<Produto> exibirEstoqueDeProdutos(){
 		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-<<<<<<< HEAD
-	public ControleCliente ControleCliente1(){
-		return this.controlCliente;
-		
-=======
 	
 	
 	// controle de clientes
@@ -89,7 +84,7 @@ public class FachadaFiado {
 	
 	public Cliente buscarCliente(String cpf){
 		return this.controlCliente.buscarCliente(cpf);
->>>>>>> d0c2544f578c01b6ee353354489d953d5148c200
+
 	}
 	public boolean login(String username, String password) {
 		try {
