@@ -65,7 +65,6 @@ public class FachadaFiado {
 	public List<Produto> exibirEstoqueDeProdutos(){
 		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-
 	
 	// controle de clientes	
 	public void cadastrarCliente(String numero, String nome, String rua, String bairro, String telefone, String referencia, String cpf){
