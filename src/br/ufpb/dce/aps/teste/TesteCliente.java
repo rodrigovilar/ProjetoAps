@@ -76,5 +76,9 @@ public class TesteCliente {
 	public void testaReferenciaDoCliente(){
 		assertEquals(this.referencia,ff.buscarCliente(this.cpf).getEndereco().getReferencia());
 	}
+	
+	public void testeAcontecaExcecao(){
+		
+	}
 
 }
