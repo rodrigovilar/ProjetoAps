@@ -5,16 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.ufpb.dce.aps.entidades.Session;
 import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.UsernameInvalidException;
-import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TDD {
-	public FachadaFiado	f;
+	public Session	f;
 	
 	@Before
 	public void setUp() {
-		f = new FachadaFiado();
+		f = new Session();
 	}
 	
 	@Test
