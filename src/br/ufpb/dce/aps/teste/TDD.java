@@ -1,6 +1,6 @@
 package br.ufpb.dce.aps.teste;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,29 +10,27 @@ import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class TDD {
-	public Session	f;
 	
 	@Before
 	public void setUp() {
-		f = new Session();
 	}
 	
 	@Test
 	public void test_001() {
 		/* Login */
-		assertEquals(null, f.login("admin", " "));
+		assertTrue(Session.login("admin", " "));
 	}
 	
 	@Test(expected = UsernameInvalidException.class)
 	public void test_002() {
 		/* Login com exception em username */
-		assertEquals(null, f.login("admina", " "));
+		assertTrue(Session.login("admina", " "));
 	}
 	
 	@Test(expected = PasswordInvalidException.class)
 	public void test_003() {
 		/* Login com exception em password */
-		assertEquals(null, f.login("admin", "1"));
+		assertTrue(Session.login("admin", "1"));
 	}
 	
 }
