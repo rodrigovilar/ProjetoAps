@@ -1,8 +1,8 @@
-package br.ufpb.dce.aps.controllers.interfaces;
+package br.ufpb.dce.aps.v2.controllers.interfaces;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.entity.interfaces.Entity;
+import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 
 public interface Controller {
 	public List<Entity> index();

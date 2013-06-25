@@ -1,8 +1,8 @@
-package br.ufpb.dce.aps.entitys;
+package br.ufpb.dce.aps.v2.entitys;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.entity.interfaces.Entity;
+import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 
 public class Venda implements Entity {
 	private Entity				vendedor;

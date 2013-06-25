@@ -1,11 +1,11 @@
-package br.ufpb.dce.aps.controllers;
+package br.ufpb.dce.aps.v2.controllers;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.controllers.interfaces.Controller;
-import br.ufpb.dce.aps.entity.interfaces.Entity;
+import br.ufpb.dce.aps.v2.controllers.interfaces.Controller;
+import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 
-public class Produto implements Controller {
+public class Venda implements Controller {
 	
 	@Override
 	public List<Entity> index() {
@@ -16,7 +16,6 @@ public class Produto implements Controller {
 	@Override
 	public void criar(Entity entidade) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -36,4 +35,5 @@ public class Produto implements Controller {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }

@@ -1,6 +1,6 @@
-package br.ufpb.dce.aps.entity.interfaces;
+package br.ufpb.dce.aps.v2.entity.interfaces;
 
-import br.ufpb.dce.aps.entitys.Endereco;
+import br.ufpb.dce.aps.v2.entitys.Endereco;
 
 public abstract class Pessoa implements Entity {
 	
