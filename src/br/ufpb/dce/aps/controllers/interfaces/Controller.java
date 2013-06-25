@@ -7,8 +7,9 @@ import br.ufpb.dce.aps.entity.interfaces.Entity;
 public interface Controller {
 	public List<Entity> index();
 	
-	 public void criar(Entity entidade);
-	 /* 
+	public void criar(Entity entidade);
+	
+	/*
 	 * padrao singleton ou abstract factory
 	 */
 	public Entity get_criado();

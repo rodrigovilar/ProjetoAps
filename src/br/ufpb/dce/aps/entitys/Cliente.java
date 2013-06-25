@@ -7,13 +7,13 @@ import br.ufpb.dce.aps.entity.interfaces.Pessoa;
 
 public class Cliente extends Pessoa implements Entity {
 	
-	private List<Entity> venda;
+	private List<Entity> conta;
 
 	public List<Entity> getVenda() {
-		return venda;
+		return conta;
 	}
 
-	public void setVenda(List<Entity> venda) {
-		this.venda = venda;
+	public void setVenda(List<Entity> conta) {
+		this.conta = conta;
 	}
 }

@@ -8,7 +8,7 @@ public class Venda implements Entity {
 	private Entity				vendedor;
 	private Entity				cliente;
 	private List<Entity>	produtos;
-	
+	private double				valor;
 	public Entity getCliente() {
 		return cliente;
 	}
@@ -31,5 +31,13 @@ public class Venda implements Entity {
 	
 	public void setVendedor(Entity vendedor) {
 		this.vendedor = vendedor;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 }
