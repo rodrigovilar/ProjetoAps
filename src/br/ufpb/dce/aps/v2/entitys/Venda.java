@@ -9,6 +9,16 @@ public class Venda implements Entity {
 	private Entity				cliente;
 	private List<Entity>	produtos;
 	private double				valor;
+	private Notification	notification;
+	
+	public Notification getNotification() {
+		return notification;
+	}
+	
+	public void setNotification(Notification notification) {
+		this.notification = notification;
+	}
+	
 	public Entity getCliente() {
 		return cliente;
 	}
@@ -32,11 +42,11 @@ public class Venda implements Entity {
 	public void setVendedor(Entity vendedor) {
 		this.vendedor = vendedor;
 	}
-
+	
 	public double getValor() {
 		return valor;
 	}
-
+	
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
