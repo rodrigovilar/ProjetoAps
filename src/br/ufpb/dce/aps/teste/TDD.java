@@ -88,7 +88,7 @@ public class TDD {
 	 * .../cliente/:id/:edit => cliente.get_by_id(:id)
 	 * .../cliente/:id/:edit/:conta/:id => cliente.get_by_id(:id).get_conta_by_id(:id).alterar_status()
 	 * .../cliente/:id/:edit/:conta/:id => cliente.get_by_id(:id).get_conta_by_id(:id).alterar_data()
-	 * .../cliente/:id/:delete
+	 * .../cliente/:id/:delete => cliente.delete_by_id(:id)
 	 * */
 
 	

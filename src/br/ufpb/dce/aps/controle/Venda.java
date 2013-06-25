@@ -1,5 +1,7 @@
 package br.ufpb.dce.aps.controle;
 
+import java.util.List;
+
 import br.ufpb.dce.aps.controle.interfaces.Controller;
 import br.ufpb.dce.aps.entidade.interfaces.Entity;
 
@@ -12,27 +14,28 @@ public class Venda implements Controller {
 	}
 
 	@Override
-	public void criar(Entity entidade) {
+	public List<Entity> criar(Entity entidade) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void get_criado() {
+	public Entity get_criado() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void get_by_id(int index) {
+	public Entity get_by_id(int index) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void delete_by_id(int index) {
+	public Entity delete_by_id(int index) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+
 	
 }
