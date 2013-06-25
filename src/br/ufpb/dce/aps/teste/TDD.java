@@ -18,6 +18,7 @@ public class TDD {
 	}
 	/**
 	 * {index => listar}
+	 * Sequencia de estimulos a serem feitos no sistema
 	 * 
 	 * projeto.aps.ufpb.br/ => login() 
 	 * .../:index => login()
@@ -28,10 +29,12 @@ public class TDD {
 	 * .../venda/ => venda.index() + N encontrado
 	 * .../venda/:index => venda.index()
 	 * .../venda/:new => venda.criar_venda()
+	 * .../venda/:new/:vendedor/:id => venda.get_venda_criada().set_vendedor()
+	 * .../venda/:new/:vendedor/:id => venda.get_venda_criada().set_vendedor() + Vendedor n existe 
 	 * .../venda/:new => venda.criar_venda() + Nao pode criar
-	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id)
-	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n existe
-	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n tem no estoque
+	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id)
+	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n existe
+	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n tem no estoque
 	 * .../venda/:id => venda.get_by_id(:id)
 	 * .../venda/:id => venda.get_by_id(:id) + Venda n existe
 	 * .../venda/:id/:edit => venda.edit(:id)

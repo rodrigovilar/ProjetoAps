@@ -2,7 +2,6 @@ package br.ufpb.dce.aps.fachada;
 
 import java.util.List;
 
-
 import br.ufpb.dce.aps.controles.ControleAutenticacao;
 import br.ufpb.dce.aps.controles.ControleCliente;
 import br.ufpb.dce.aps.controles.ControleContas;
@@ -13,30 +12,29 @@ import br.ufpb.dce.aps.controles.ControleVendedor;
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.entidades.Session;
-import br.ufpb.dce.aps.entidades.User;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class FachadaFiado {
-
-	private ControleVendas controlVenda ;
-
-	private ControleCliente controlCliente ;
-
-	private ControleVendedor controlVendedor ;
-
-	private ControleProduto controlProd ;
-
-	private ControleNotificacao controlNot ;
-
-	private ControleContas controlCont ;
-
-	private ControleAutenticacao auth;
 	
-	public FachadaFiado(){
-		this.controlVenda =  new ControleVendas();
+	private ControleVendas				controlVenda;
+	
+	private ControleCliente				controlCliente;
+	
+	private ControleVendedor			controlVendedor;
+	
+	private ControleProduto				controlProd;
+	
+	private ControleNotificacao		controlNot;
+	
+	private ControleContas				controlCont;
+	
+	private ControleAutenticacao	auth;
+	
+	public FachadaFiado() {
+		this.controlVenda = new ControleVendas();
 		this.controlCliente = new ControleCliente();
 		this.controlVendedor = new ControleVendedor();
 		this.controlProd = new ControleProduto();
@@ -45,45 +43,51 @@ public class FachadaFiado {
 		this.auth = new ControleAutenticacao();
 		
 	}
+	
 	// Controle de produtos
-	public void cadastrarProduto(String nome, int cod, float preco){
+	public void cadastrarProduto(String nome, int cod, float preco) {
 		try {
 			this.controlProd.cadastrarProduto(nome, cod, preco);
-		} catch (ProdutoJaCadastradoException e) {
+		}
+		catch (ProdutoJaCadastradoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
-	
-	public Produto buscarProduto(int cod){
-		return this.controlProd.buscarProduto(cod);
-	}
-	
-	public boolean removerProduto(int cod){
-		return this.controlProd.removerProduto(cod);
-	}
-
-	public List<Produto> exibirEstoqueDeProdutos(){
-		return this.controlProd.exibirEstoqueDeProdutos();
-	}
-	
-	// controle de clientes	
-	public void cadastrarCliente(String numero, String nome, String rua, String bairro, String telefone, String referencia, String cpf){
-		 try {
-			this.controlCliente.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
-		} catch (ClienteJaCadastradoException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public boolean removerCliente(String cpf){
+	public Produto buscarProduto(int cod) {
+		return this.controlProd.buscarProduto(cod);
+	}
+	
+	public boolean removerProduto(int cod) {
+		return this.controlProd.removerProduto(cod);
+	}
+	
+	public List<Produto> exibirEstoqueDeProdutos() {
+		return this.controlProd.exibirEstoqueDeProdutos();
+	}
+	
+	// controle de clientes
+	public void cadastrarCliente(String numero, String nome, String rua,
+			String bairro, String telefone, String referencia, String cpf) {
+		try {
+			this.controlCliente.cadastrarCliente(numero, nome, rua, bairro, telefone,
+					referencia, cpf);
+		}
+		catch (ClienteJaCadastradoException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean removerCliente(String cpf) {
 		return this.controlCliente.removerCliente(cpf);
 	}
 	
-	public Cliente buscarCliente(String cpf){
+	public Cliente buscarCliente(String cpf) {
 		return this.controlCliente.buscarCliente(cpf);
-
+		
 	}
+	
 	public Session login(String username, String password) {
 		try {
 			return auth.login(username, password);
@@ -97,10 +101,9 @@ public class FachadaFiado {
 		return null;
 	}
 	
-
 	public ControleCliente ControleCliente() {
 		// TODO Auto-generated method stub
-	 return this.controlCliente;
+		return this.controlCliente;
 	}
-
+	
 }
