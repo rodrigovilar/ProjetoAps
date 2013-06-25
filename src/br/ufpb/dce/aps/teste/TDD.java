@@ -16,6 +16,43 @@ public class TDD {
 	public void setUp() {
 		f = new FachadaFiado();
 	}
+	/**
+	 * {index => listar}
+	 * 
+	 * projeto.aps.ufpb.br/ => login() 
+	 * .../:index => login()
+	 * .../:index => login() + Usuario N encontrado
+	 * .../:index => login() + Senha errada
+	 * ---------------------------------------------------
+	 * .../venda/ => venda.index()
+	 * .../venda/ => venda.index() + N encontrado
+	 * .../venda/:index => venda.index()
+	 * .../venda/:new => venda.criar_venda()
+	 * .../venda/:new => venda.criar_venda() + Nao pode criar
+	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id)
+	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n existe
+	 * .../venda/:new/:produto/:id venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n tem no estoque
+	 * .../venda/:id => venda.get_by_id(:id)
+	 * .../venda/:id => venda.get_by_id(:id) + Venda n existe
+	 * .../venda/:id/:edit => venda.edit(:id)
+	 * .../venda/:id/:edit => venda.edit(:id) + N pode editar
+	 * .../venda/:id/:delete => venda.delete_by_id(:id)
+	 * .../venda/:id/:delete => venda.delete_by_id(:id) + N pode deletar
+	 * ---------------------------------------------------
+	 * .../produto/ => venda.index()
+	 * .../produto/ => venda.index() + N encontrado
+	 * .../produto/:index => venda.index()
+	 * .../produto/:new => venda.criar_venda()
+	 * .../produto/:new => venda.criar_venda() + Nao pode criar
+	 * .../produto/:id => venda.get_by_id(:id)
+	 * .../produto/:id => venda.get_by_id(:id) + Produto n existe
+	 * .../produto/:id/:edit => venda.edit(:id)
+	 * .../produto/:id/:edit => venda.edit(:id) + N pode editar
+	 * .../produto/:id/:delete => venda.delete_by_id(:id)
+	 * .../produto/:id/:delete => venda.delete_by_id(:id) + N pode deletar
+	 * ---------------------------------------------------
+	 * */
+
 	
 	@Test
 	public void test_001() {
