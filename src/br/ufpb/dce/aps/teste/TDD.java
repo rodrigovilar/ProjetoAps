@@ -24,6 +24,7 @@ public class TDD {
 	 * .../:index => login()
 	 * .../:index => login() + Usuario N encontrado
 	 * .../:index => login() + Senha errada
+	 * .../:index => notificacao()
 	 * .../venda/ => venda.index()
 	 * .../venda/ => venda.index() + N encontrado
 	 * .../venda/:index => venda.index()
@@ -58,8 +59,32 @@ public class TDD {
 	 * .../produto/:id => venda.get_by_id(:id) + Produto n existe
 	 * .../produto/:id/:edit => venda.edit(:id)
 	 * .../produto/:id/:edit => venda.edit(:id) + N pode editar
+	 * .../produto/:id/:edit/:quantidade => venda.edit(:id).adicionar_estoque(:quantidade)
+	 * .../produto/:id/:edit/:quantidade => venda.edit(:id).adicionar_estoque(:quantidade) + quantidade negativa
+	 * .../produto/:id/:edit/:quantidade => venda.edit(:id).adicionar_estoque(:quantidade) + numero invalido
 	 * .../produto/:id/:delete => venda.delete_by_id(:id)
 	 * .../produto/:id/:delete => venda.delete_by_id(:id) + N pode deletar
+	 * .../conta/ => conta.index()
+	 * .../conta/index => conta.index()
+	 * .../conta/:new => conta.criar_conta()
+	 * .../conta/:new/:cliente_id => conta.get_conta_criada().set_cliente_debito(:cliente_id)
+	 * .../conta/:new/:cliente_id => conta.get_conta_criada().set_cliente_debito(:cliente_id) + cliente n existe
+	 * .../conta/:id => conta.get_conta_by_id(:id)
+	 * .../conta/:id => conta.get_conta_by_id(:id) + conta n existe
+	 * .../conta/:id/:edit => conta.edit(:id).alterar_status()
+	 * .../conta/:id/:edit => conta.edit(:id).alterar_status() + n pode alterar o status
+	 * .../conta/:id/:edit => conta.edit(:id).alterar_data()
+	 * .../conta/:id/:edit => conta.edit(:id).alterar_data() + n pode alterar data
+	 * .../conta/:id/:edit => conta.edit(:id).alterar_data() + limite excedido
+	 * .../cliente/ => cliente.index()
+	 * .../cliente/:index => cliente.index()
+	 * .../cliente/:new => cliente.criar_cliente()
+	 * .../cliente/:id => cliente.get_cliente_by_id(:id)
+	 * .../cliente/:id/:contas => cliente.get_cliente_by_id(:id).get_contas.index()
+	 * .../cliente/:id/:edit => cliente.edit(:id)
+	 * .../cliente/:id/:edit/:conta/:id => cliente.edit(:id).get_conta_by_id(:id).alterar_status()
+	 * .../cliente/:id/:edit/:conta/:id => cliente.edit(:id).get_conta_by_id(:id).alterar_data()
+	 * .../cliente/:id/:delete
 	 * */
 
 	
