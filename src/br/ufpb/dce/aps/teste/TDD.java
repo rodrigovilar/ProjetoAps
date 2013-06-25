@@ -55,8 +55,8 @@ public class TDD {
 	 * .../produto/ => venda.index()
 	 * .../produto/ => venda.index() + N encontrado
 	 * .../produto/:index => venda.index()
-	 * .../produto/:new => venda.criar_venda()
-	 * .../produto/:new => venda.criar_venda() + Nao pode criar
+	 * .../produto/:new => venda.criar_produto()
+	 * .../produto/:new => venda.criar_produto() + Nao pode criar
 	 * .../produto/:id => venda.get_by_id(:id)
 	 * .../produto/:id => venda.get_by_id(:id) + Produto n existe
 	 * .../produto/:id/:edit => venda.get_by_id(:id)
