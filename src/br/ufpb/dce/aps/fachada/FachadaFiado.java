@@ -2,7 +2,6 @@ package br.ufpb.dce.aps.fachada;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.controles.ControleAutenticacao;
 import br.ufpb.dce.aps.controles.ControleCliente;
 import br.ufpb.dce.aps.controles.ControleContas;
 import br.ufpb.dce.aps.controles.ControleNotificacao;
@@ -31,7 +30,6 @@ public class FachadaFiado {
 	
 	private ControleContas				controlCont;
 	
-	private ControleAutenticacao	auth;
 	
 	public FachadaFiado() {
 		this.controlVenda = new ControleVendas();
@@ -40,7 +38,6 @@ public class FachadaFiado {
 		this.controlProd = new ControleProduto();
 		this.controlNot = new ControleNotificacao();
 		this.controlCont = new ControleContas();
-		this.auth = new ControleAutenticacao();
 		
 	}
 	
@@ -89,16 +86,7 @@ public class FachadaFiado {
 	}
 	
 	public Session login(String username, String password) {
-		try {
-			return auth.login(username, password);
-		}
-		catch (UsernameInvalidException e) {
-			e.printStackTrace();
-		}
-		catch (PasswordInvalidException e) {
-			e.printStackTrace();
-		}
-		return null;
+			return new Session();
 	}
 	
 	public ControleCliente ControleCliente() {
