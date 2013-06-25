@@ -10,26 +10,22 @@ import br.ufpb.dce.aps.controles.ControleVendas;
 import br.ufpb.dce.aps.controles.ControleVendedor;
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Produto;
-import br.ufpb.dce.aps.entidades.Session;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
-import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
-import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class FachadaFiado {
 	
-	private ControleVendas				controlVenda;
+	private ControleVendas			controlVenda;
 	
-	private ControleCliente				controlCliente;
+	private ControleCliente			controlCliente;
 	
-	private ControleVendedor			controlVendedor;
+	private ControleVendedor		controlVendedor;
 	
-	private ControleProduto				controlProd;
+	private ControleProduto			controlProd;
 	
-	private ControleNotificacao		controlNot;
+	private ControleNotificacao	controlNot;
 	
-	private ControleContas				controlCont;
-	
+	private ControleContas			controlCont;
 	
 	public FachadaFiado() {
 		this.controlVenda = new ControleVendas();
@@ -83,10 +79,6 @@ public class FachadaFiado {
 	public Cliente buscarCliente(String cpf) {
 		return this.controlCliente.buscarCliente(cpf);
 		
-	}
-	
-	public Session login(String username, String password) {
-			return new Session();
 	}
 	
 	public ControleCliente ControleCliente() {

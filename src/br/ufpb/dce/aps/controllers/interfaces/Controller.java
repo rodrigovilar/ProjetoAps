@@ -1,13 +1,13 @@
-package br.ufpb.dce.aps.controle.interfaces;
+package br.ufpb.dce.aps.controllers.interfaces;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.entidade.interfaces.Entity;
+import br.ufpb.dce.aps.entity.interfaces.Entity;
 
 public interface Controller {
-	public void index();
+	public List<Entity> index();
 	
-	 public List<Entity> criar(Entity entidade);
+	 public void criar(Entity entidade);
 	 /* 
 	 * padrao singleton ou abstract factory
 	 */

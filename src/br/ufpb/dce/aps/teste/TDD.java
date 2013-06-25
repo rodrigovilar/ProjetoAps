@@ -1,12 +1,7 @@
 package br.ufpb.dce.aps.teste;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
-import org.junit.Test;
 
-import br.ufpb.dce.aps.exception.PasswordInvalidException;
-import br.ufpb.dce.aps.exception.UsernameInvalidException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TDD {
@@ -90,24 +85,5 @@ public class TDD {
 	 * .../cliente/:id/:edit/:conta/:id => cliente.get_by_id(:id).get_conta_by_id(:id).alterar_data()
 	 * .../cliente/:id/:delete => cliente.delete_by_id(:id)
 	 * */
-
-	
-	@Test
-	public void test_001() {
-		/* Login */
-		assertEquals(null, f.login("admin", " "));
-	}
-	
-	@Test(expected = UsernameInvalidException.class)
-	public void test_002() {
-		/* Login com exception em username */
-		assertEquals(null, f.login("admina", " "));
-	}
-	
-	@Test(expected = PasswordInvalidException.class)
-	public void test_003() {
-		/* Login com exception em password */
-		assertEquals(null, f.login("admin", "1"));
-	}
-	
+		
 }
