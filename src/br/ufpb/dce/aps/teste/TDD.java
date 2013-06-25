@@ -24,14 +24,13 @@ public class TDD {
 	 * .../:index => login()
 	 * .../:index => login() + Usuario N encontrado
 	 * .../:index => login() + Senha errada
-	 * ---------------------------------------------------
 	 * .../venda/ => venda.index()
 	 * .../venda/ => venda.index() + N encontrado
 	 * .../venda/:index => venda.index()
 	 * .../venda/:new => venda.criar_venda()
+	 * .../venda/:new => venda.criar_venda() + Nao pode criar
 	 * .../venda/:new/:vendedor/:id => venda.get_venda_criada().set_vendedor()
 	 * .../venda/:new/:vendedor/:id => venda.get_venda_criada().set_vendedor() + Vendedor n existe 
-	 * .../venda/:new => venda.criar_venda() + Nao pode criar
 	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id)
 	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n existe
 	 * .../venda/:new/:produto/:id => venda.get_venda_criada().adicionar_item(:produto/:id) + Produto n tem no estoque
@@ -39,9 +38,17 @@ public class TDD {
 	 * .../venda/:id => venda.get_by_id(:id) + Venda n existe
 	 * .../venda/:id/:edit => venda.edit(:id)
 	 * .../venda/:id/:edit => venda.edit(:id) + N pode editar
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).adicionar_item(:produto/:id)
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).adicionar_item(:produto/:id) + Produto n existe
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).adicionar_item(:produto/:id) + Produto n tem no estoque
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).editar_quantidade(:produto/:id, :quantidade)
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).editar_quantidade(:produto/:id, :quantidade) + quantidade negativa
+	 * .../venda/:id/:edit/:produto/:id => venda.edit(:id).editar_quantidade(:produto/:id, :quantidade) + quantida acima do estoque
+	 * .../venda/:id/:edit/:produto/:id/:delete => venda.edit(:id).remover_item(:produto/:id)
+	 * .../venda/:id/:edit/:produto/:id/:delete => venda.edit(:id).remover_item(:produto/:id) + Produto n esta na venda
+	 * .../venda/:id/:edit/:produto/:id/:delete => venda.edit(:id).remover_item(:produto/:id) + lista de venda vazia
 	 * .../venda/:id/:delete => venda.delete_by_id(:id)
 	 * .../venda/:id/:delete => venda.delete_by_id(:id) + N pode deletar
-	 * ---------------------------------------------------
 	 * .../produto/ => venda.index()
 	 * .../produto/ => venda.index() + N encontrado
 	 * .../produto/:index => venda.index()
@@ -53,7 +60,6 @@ public class TDD {
 	 * .../produto/:id/:edit => venda.edit(:id) + N pode editar
 	 * .../produto/:id/:delete => venda.delete_by_id(:id)
 	 * .../produto/:id/:delete => venda.delete_by_id(:id) + N pode deletar
-	 * ---------------------------------------------------
 	 * */
 
 	
