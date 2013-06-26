@@ -47,12 +47,9 @@ public class FachadaFiado {
 	}
 	// Controle de produtos
 	public void cadastrarProduto(String nome, int cod, float preco){
-		try {
+		
 			this.controlProd.cadastrarProduto(nome, cod, preco);
-		} catch (ProdutoJaCadastradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+	
 	}
 	
 	public Produto buscarProduto(int cod){

@@ -6,7 +6,8 @@ import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
 public class ControleAutenticacao {
 	
-	public Session login(String username, String password) throws UsernameInvalidException, PasswordInvalidException{
+	public Session login(String username, String password)
+			throws UsernameInvalidException, PasswordInvalidException{
 		return null;
 	}
 	

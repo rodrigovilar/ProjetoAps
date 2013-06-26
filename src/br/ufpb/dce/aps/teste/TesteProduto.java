@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import br.ufpb.dce.aps.controles.ControleProduto;
 import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
@@ -57,6 +58,13 @@ public class TesteProduto {
 	@Test
 	public void verificaSeRemoveProduto(){
 		assertEquals(true,ff.removerProduto(this.codigoDefault));
+	}
+	
+	@Test (expected = ProdutoJaCadastradoException.class)
+	public void excecaoDeProdutoJaExistente(){
+		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault,this.precoDefault);
+		
+		
 	}
 
 
