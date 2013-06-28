@@ -14,25 +14,25 @@ public class Produto implements Controller {
 	}
 	
 	@Override
-	public void criar(Entity entidade) {
+	public Entity get(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void update(int index, Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}
 	
 	@Override
-	public Entity get_criado() {
+	public void create(Entity entidade) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 	
 	@Override
-	public Entity get_by_id(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Entity delete_by_id(int index) {
+	public Entity delete(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}

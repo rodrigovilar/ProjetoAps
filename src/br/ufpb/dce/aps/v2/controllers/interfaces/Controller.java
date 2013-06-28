@@ -5,16 +5,14 @@ import java.util.List;
 import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 
 public interface Controller {
+	
 	public List<Entity> index();
 	
-	public void criar(Entity entidade);
+	public void create(Entity entidade);
 	
-	/*
-	 * padrao singleton ou abstract factory
-	 */
-	public Entity get_criado();
+	public Entity get(int index);
 	
-	public Entity get_by_id(int index);
+	public void update(int index, Entity entity);
 	
-	public Entity delete_by_id(int index);
+	public Entity delete(int index);
 }
