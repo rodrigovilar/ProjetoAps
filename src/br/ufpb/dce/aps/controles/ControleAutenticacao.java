@@ -1,6 +1,6 @@
 package br.ufpb.dce.aps.controles;
 
-import br.ufpb.dce.aps.entidades.Session;
+import br.ufpb.dce.aps.v2.entitys.Session;
 import br.ufpb.dce.aps.exception.PasswordInvalidException;
 import br.ufpb.dce.aps.exception.UsernameInvalidException;
 
