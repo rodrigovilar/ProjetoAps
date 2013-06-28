@@ -14,19 +14,19 @@ import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 
 public class FachadaFiado {
-	
+
 	private ControleVendas			controlVenda;
-	
+
 	private ControleCliente			controlCliente;
-	
+
 	private ControleVendedor		controlVendedor;
-	
+
 	private ControleProduto			controlProd;
-	
+
 	private ControleNotificacao	controlNot;
-	
+
 	private ControleContas			controlCont;
-	
+
 	public FachadaFiado() {
 		this.controlVenda = new ControleVendas();
 		this.controlCliente = new ControleCliente();
@@ -34,10 +34,11 @@ public class FachadaFiado {
 		this.controlProd = new ControleProduto();
 		this.controlNot = new ControleNotificacao();
 		this.controlCont = new ControleContas();
-		
+
 	}
-	
+
 	// Controle de produtos
+
 	public void cadastrarProduto(String nome, int cod, float preco) {
 		try {
 			this.controlProd.cadastrarProduto(nome, cod, preco);
@@ -46,20 +47,21 @@ public class FachadaFiado {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
-	
+
 	public Produto buscarProduto(int cod) {
 		return this.controlProd.buscarProduto(cod);
 	}
-	
+
 	public boolean removerProduto(int cod) {
 		return this.controlProd.removerProduto(cod);
 	}
-	
+
 	public List<Produto> exibirEstoqueDeProdutos() {
 		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-	
+
 	// controle de clientes
 	public void cadastrarCliente(String numero, String nome, String rua,
 			String bairro, String telefone, String referencia, String cpf) {
@@ -71,19 +73,18 @@ public class FachadaFiado {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean removerCliente(String cpf) {
 		return this.controlCliente.removerCliente(cpf);
 	}
-	
+
 	public Cliente buscarCliente(String cpf) {
 		return this.controlCliente.buscarCliente(cpf);
-		
+
 	}
-	
+
 	public ControleCliente ControleCliente() {
-		// TODO Auto-generated method stub
 		return this.controlCliente;
 	}
-	
+
 }

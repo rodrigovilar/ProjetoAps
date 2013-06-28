@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
@@ -16,9 +17,9 @@ public class TesteProduto {
 	private String	nomeDoProduto;
 	
 	// valor abaixo feito para ser
-	private float		precoDefault;
+	private float	precoDefault;
 	
-	FachadaFiado		ff;
+	FachadaFiado	ff;
 	
 	/**
 	 * ja cadastro um produto aki no before. Isso simplifica os testes
@@ -57,5 +58,13 @@ public class TesteProduto {
 	public void verificaSeRemoveProduto() {
 		assertEquals(true, ff.removerProduto(this.codigoDefault));
 	}
-	
+
+	@Test (expected = ProdutoJaCadastradoException.class)
+	public void excecaoDeProdutoJaExistente(){
+		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault,this.precoDefault);
+		
+		
+	}
+
+
 }
