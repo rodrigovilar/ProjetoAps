@@ -28,8 +28,7 @@ public class SessionController implements Controller {
 
 	@Override
 	public void create(Entity entidade) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override

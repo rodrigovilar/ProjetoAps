@@ -5,6 +5,7 @@ import br.ufpb.dce.aps.v2.controllers.SessionController;
 import br.ufpb.dce.aps.v2.controllers.VendaController;
 import br.ufpb.dce.aps.v2.controllers.VendedorController;
 import br.ufpb.dce.aps.v2.controllers.interfaces.Controller;
+import br.ufpb.dce.aps.v2.entitys.Login;
 
 public class Facade {
 	
@@ -24,6 +25,10 @@ public class Facade {
 	
 	public void setControllerVendendor(){
 		this.c = new VendedorController();
+	}
+
+	public void criarSessao(Login l) {
+		c.create(l);
 	}
 	
 }
