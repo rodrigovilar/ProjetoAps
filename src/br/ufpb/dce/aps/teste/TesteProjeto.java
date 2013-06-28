@@ -4,7 +4,7 @@ import org.junit.Before;
 
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
-public class TDD {
+public class TesteProjeto {
 	public FachadaFiado	f;
 	
 	@Before

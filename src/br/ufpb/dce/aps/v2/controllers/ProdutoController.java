@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufpb.dce.aps.v2.controllers.interfaces.Controller;
 import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 
-public class Cliente implements Controller {
+public class ProdutoController implements Controller {
 	
 	@Override
 	public List<Entity> index() {
@@ -36,5 +36,4 @@ public class Cliente implements Controller {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }
