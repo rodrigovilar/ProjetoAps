@@ -10,32 +10,38 @@ public class ControleProduto {
 
 	private List<Produto> estoque = new LinkedList<Produto>();
 	private Produto p;
+	private int contadorDeProduto = 0;
 
-	public void cadastrarProduto(String nome, int cod, float preco)
+	public void cadastrarProduto(String nome, int codigo, float preco)
 			throws ProdutoJaCadastradoException {
 		p = new Produto();
 		// se lista vazia
-		if (null == this.buscarProduto(cod)) {
+		if (this.estoque.isEmpty()) {
 			p.setNome(nome);
 			p.setPreco(preco);
-			p.setCodigo(cod);
+			p.setCodigo(codigo);
 			this.estoque.add(p);
+			this.contadorDeProduto++;
+
 			// se lista não vazia, cheque se os produtos já existente
-		} else if (cod != this.buscarProduto(cod).getCodigo()) {
+		} else if (codigo != this.buscarProduto(codigo).getCodigo()) {
 			p.setNome(nome);
 			p.setPreco(preco);
-			p.setCodigo(cod);
+			p.setCodigo(codigo);
+			this.contadorDeProduto++;
 			this.estoque.add(p);
+			
 			// se produto ja existe
 		} else {
-			throw new ProdutoJaCadastradoException();
+			throw new ProdutoJaCadastradoException("Produto Exception");
 		}
 	}
 
-	public boolean removerProduto(int cod) {
-		Produto p = this.buscarProduto(cod);
+	public boolean removerProduto(int codigo) {
+		Produto p = this.buscarProduto(codigo);
 		if (p != null) {
 			this.estoque.remove(p);
+			this.contadorDeProduto--;
 			return true;
 		}
 		return false;
@@ -43,15 +49,21 @@ public class ControleProduto {
 
 	
 
-	public Produto buscarProduto(int cod) {
+	public Produto buscarProduto(int codigo) {
 		for (Produto p : estoque)
-			if (p.getCodigo() == cod)
+			if (p.getCodigo() == codigo)
 				return p;
 		return null;
 	}
+	
+	public int getNumeroDeProdutos(){
+		return this.contadorDeProduto;
+	}
 
 	public List<Produto> exibirEstoqueDeProdutos() {
+		if(!this.estoque.isEmpty())
 		return this.estoque;
+		return null;
 	}
 
 }

@@ -19,7 +19,7 @@ public class ControleCliente {
 		c = new Cliente();
 		
 		// se lista vazia
-		if (null == this.buscarCliente(cpf)) {
+		if (this.clientes.isEmpty()) {
 			e = new Endereco(numero, rua, bairro, referencia);
 			c.setNome(nome);
 			c.setCPF(cpf);
@@ -40,7 +40,6 @@ public class ControleCliente {
 
 		//se ja existe
 		else throw new ClienteJaCadastradoException("Cliente exception");
-
 
 	}
 	
@@ -64,7 +63,9 @@ public class ControleCliente {
 	}
 	
 	public List<Cliente>listarClientes(){
+		if(!this.clientes.isEmpty())
 		return this.clientes;
+		return null;
 	}
 	
 	public int getNumeroDeClientes(){

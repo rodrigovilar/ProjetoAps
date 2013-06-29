@@ -62,7 +62,7 @@ public class TesteProduto {
 	@Test (expected = ProdutoJaCadastradoException.class)
 	public void excecaoDeProdutoJaExistente(){
 		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault,this.precoDefault);
-
+		System.out.println(ff.getNumeroDeProdutos());
 	}
 
 
