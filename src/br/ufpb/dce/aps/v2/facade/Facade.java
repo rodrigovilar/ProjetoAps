@@ -1,15 +1,15 @@
 package br.ufpb.dce.aps.v2.facade;
 
-import br.ufpb.dce.aps.v2.controllers.ClienteController;
-import br.ufpb.dce.aps.v2.controllers.SessionController;
-import br.ufpb.dce.aps.v2.controllers.VendaController;
-import br.ufpb.dce.aps.v2.controllers.VendedorController;
-import br.ufpb.dce.aps.v2.controllers.interfaces.Controller;
 import br.ufpb.dce.aps.v2.entitys.Login;
+import br.ufpb.dce.aps.v2.model.ClienteController;
+import br.ufpb.dce.aps.v2.model.SessionController;
+import br.ufpb.dce.aps.v2.model.VendaController;
+import br.ufpb.dce.aps.v2.model.VendedorController;
+import br.ufpb.dce.aps.v2.model.interfaces.Model;
 
 public class Facade {
 	
-	private Controller	c;
+	private Model	c;
 	
 	public void setControllerCliente() {
 		this.c = new ClienteController();

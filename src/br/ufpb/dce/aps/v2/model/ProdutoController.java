@@ -1,11 +1,11 @@
-package br.ufpb.dce.aps.v2.controllers;
+package br.ufpb.dce.aps.v2.model;
 
 import java.util.List;
 
-import br.ufpb.dce.aps.v2.controllers.interfaces.Controller;
 import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
+import br.ufpb.dce.aps.v2.model.interfaces.Model;
 
-public class ProdutoController implements Controller {
+public class ProdutoController implements Model {
 	
 	@Override
 	public List<Entity> index() {
