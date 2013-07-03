@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 import br.ufpb.dce.aps.v2.model.interfaces.Model;
 
-public class VendaController implements Model {
+public class ClienteModel implements Model {
 	
 	@Override
 	public List<Entity> index() {

@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufpb.dce.aps.v2.entity.interfaces.Entity;
 import br.ufpb.dce.aps.v2.model.interfaces.Model;
 
-public class ProdutoController implements Model {
+public class VendedorModel implements Model {
 	
 	@Override
 	public List<Entity> index() {
@@ -24,16 +24,17 @@ public class ProdutoController implements Model {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
 	public void create(Entity entidade) {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
 	public Entity delete(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }
