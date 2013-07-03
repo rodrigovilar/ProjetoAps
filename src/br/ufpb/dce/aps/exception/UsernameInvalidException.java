@@ -5,6 +5,6 @@ public class UsernameInvalidException extends Exception {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= -8516769141012939713L;
-	
+	private static final long serialVersionUID = -8516769141012939713L;
+
 }

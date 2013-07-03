@@ -5,6 +5,6 @@ public class PasswordInvalidException extends Exception {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 3653235928170783943L;
-	
+	private static final long serialVersionUID = 3653235928170783943L;
+
 }

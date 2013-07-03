@@ -1,5 +1,4 @@
 package br.ufpb.dce.aps.teste;
-import  br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,20 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
-import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteCliente {
 
-	private FachadaFiado	ff;
+	private FachadaFiado ff;
 	// atributos para endereco e contato
-	private String				bairro;
-	private String				rua;
-	private String				numero;
-	private String				telefone;
-	private String				referencia;
-	private String				cpf;
-	private String				nome;
+	private String bairro;
+	private String rua;
+	private String numero;
+	private String telefone;
+	private String referencia;
+	private String cpf;
+	private String nome;
 
 	@Before
 	public void setUp() throws ClienteJaCadastradoException {
@@ -35,7 +33,8 @@ public class TesteCliente {
 		this.nome = "Vinicius";
 
 		// cadastrando cliente
-		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
+		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia,
+				cpf);
 
 	}
 
@@ -56,7 +55,8 @@ public class TesteCliente {
 
 	@Test
 	public void testeRuaDoCliente() {
-		assertEquals(this.rua, ff.buscarCliente(this.cpf).getEndereco().getRua());
+		assertEquals(this.rua, ff.buscarCliente(this.cpf).getEndereco()
+				.getRua());
 	}
 
 	@Test
@@ -82,9 +82,11 @@ public class TesteCliente {
 				.getReferencia());
 	}
 
-	@Test (expected = ClienteJaCadastradoException.class)
-	public void excecaoDeProdutoJaExistente() throws ClienteJaCadastradoException{
-		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia, cpf);
-		
+	@Test(expected = ClienteJaCadastradoException.class)
+	public void excecaoDeProdutoJaExistente()
+			throws ClienteJaCadastradoException {
+		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia,
+				cpf);
+
 	}
 }

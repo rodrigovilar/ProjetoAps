@@ -15,17 +15,17 @@ import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 
 public class FachadaFiado {
 
-	private ControleVendas			controlVenda;
+	private ControleVendas controlVenda;
 
-	private ControleCliente			controlCliente;
+	private ControleCliente controlCliente;
 
-	private ControleVendedor		controlVendedor;
+	private ControleVendedor controlVendedor;
 
-	private ControleProduto			controlProd;
+	private ControleProduto controlProd;
 
-	private ControleNotificacao	controlNot;
+	private ControleNotificacao controlNot;
 
-	private ControleContas			controlCont;
+	private ControleContas controlCont;
 
 	public FachadaFiado() {
 		this.controlVenda = new ControleVendas();
@@ -39,7 +39,8 @@ public class FachadaFiado {
 
 	// Controle de produtos
 
-	public void cadastrarProduto(String nome, int cod, float preco) throws ProdutoJaCadastradoException {
+	public void cadastrarProduto(String nome, int cod, float preco)
+			throws ProdutoJaCadastradoException {
 		this.controlProd.cadastrarProduto(nome, cod, preco);
 	}
 
@@ -54,17 +55,18 @@ public class FachadaFiado {
 	public List<Produto> exibirEstoqueDeProdutos() {
 		return this.controlProd.exibirEstoqueDeProdutos();
 	}
-	
-	public int getNumeroDeProdutos(){
+
+	public int getNumeroDeProdutos() {
 		return this.controlProd.getNumeroDeProdutos();
 	}
 
 	// controle de clientes
 	public void cadastrarCliente(String numero, String nome, String rua,
-			String bairro, String telefone, String referencia, String cpf) throws ClienteJaCadastradoException {
-		this.controlCliente.cadastrarCliente(numero, nome, rua, bairro, telefone,
-					referencia, cpf);
-			
+			String bairro, String telefone, String referencia, String cpf)
+			throws ClienteJaCadastradoException {
+		this.controlCliente.cadastrarCliente(numero, nome, rua, bairro,
+				telefone, referencia, cpf);
+
 	}
 
 	public boolean removerCliente(String cpf) {
