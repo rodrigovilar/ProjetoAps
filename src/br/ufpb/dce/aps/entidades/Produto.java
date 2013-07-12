@@ -35,4 +35,13 @@ public class Produto {
 	public String toString() {
 		return this.nome + " " + this.codigo + "\n";
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		Produto p = (Produto) o;
+		if((this.codigo == p.codigo) && (this.nome == p.nome) && (this.preco == p.preco))
+			return true;
+		
+		return false;
+	}
 }

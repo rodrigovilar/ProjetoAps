@@ -6,14 +6,9 @@ import java.util.Date;
 public class Cliente extends Pessoa {
 
 	private Date dataCobranca;
-	private String CPF;
 	private Conta conta;
 
-	public void setCPF(String CPF) {
-		this.CPF = CPF;
-		
-	}
-
+	
 	public Date getDataCobranca() {
 		return dataCobranca;
 	}
@@ -30,9 +25,7 @@ public class Cliente extends Pessoa {
 		this.conta = conta;
 	}
 
-	public String getCPF() {
-		return CPF;
-	}
+	
 	
 
 }

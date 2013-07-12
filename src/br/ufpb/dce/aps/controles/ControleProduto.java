@@ -78,7 +78,8 @@ public class ControleProduto {
 		String cod = String.valueOf(codigo);
 		String prec = String.valueOf(preco);
 
-		if((Pattern.matches("[a-zA-Z]", nome)) && (Pattern.matches("[0-9]", cod)) && (Pattern.matches("[0-9]",prec)))
+		if((Pattern.matches("[a-zA-Z]", nome)) && (Pattern.matches("[0-9]", cod)) && 
+				(Pattern.matches("^[0-9]",prec)))
 			return true;
 		return false;
 	}

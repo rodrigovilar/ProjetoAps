@@ -61,11 +61,9 @@ public class FachadaFiado {
 	}
 
 	// controle de clientes
-	public void cadastrarCliente(String numero, String nome, String rua,
-			String bairro, String telefone, String referencia, String cpf)
+	public void cadastrarCliente(Cliente c)
 			throws ClienteJaCadastradoException {
-		this.controlCliente.cadastrarCliente(numero, nome, rua, bairro,
-				telefone, referencia, cpf);
+		this.controlCliente.cadastrarCliente(c);
 
 	}
 

@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.internal.matchers.Each;
 
+import br.ufpb.dce.aps.entidades.Cliente;
+import br.ufpb.dce.aps.entidades.Endereco;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
@@ -12,81 +15,76 @@ public class TesteCliente {
 
 	private FachadaFiado ff;
 	// atributos para endereco e contato
-	private String bairro;
-	private String rua;
-	private String numero;
-	private String telefone;
-	private String referencia;
-	private String cpf;
-	private String nome;
-
+	
+	private Cliente c;
+	private Endereco e;
+	
 	@Before
 	public void setUp() throws ClienteJaCadastradoException {
 		ff = new FachadaFiado();
-
-		this.bairro = "centro";
-		this.rua = "quintaAvenida";
-		this.numero = "1000";
-		this.telefone = "9999-9999";
-		this.referencia = "perto da farmacia";
-		this.cpf = "098765432-12";
-		this.nome = "Vinicius";
+		c = new Cliente();
+		e= new Endereco("1000" , "quinta Avenida", "centro", "longe de tudo");
+	
+		this.c.setTelefone("234");
+		this.c.setCPF("098765432-12") ;
+		this.c.setNome("Vinicius");
+		this.c.setEndereco(e);
 
 		// cadastrando cliente
-		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia,
-				cpf);
+		ff.cadastrarCliente(c);
 
 	}
 
 	@Test
 	public void testeNomeDoCliente() {
-		assertEquals(this.nome, ff.buscarCliente(this.cpf).getNome());
+		assertEquals(c.getNome(), ff.buscarCliente(c.getCPF()).getNome());
 	}
 
 	@Test
 	public void testeCPFdoCliente() {
-		assertEquals(this.cpf, ff.buscarCliente(this.cpf).getCPF());
+		assertEquals(c.getCPF(), ff.buscarCliente(c.getCPF()).getCPF());
 	}
 
 	@Test
 	public void testeTelefoneDoCliente() {
-		assertEquals(this.telefone, ff.buscarCliente(this.cpf).getTelefone());
+		assertEquals(c.getTelefone(), ff.buscarCliente(c.getCPF()).getTelefone());
 	}
 
 	@Test
 	public void testeRuaDoCliente() {
-		assertEquals(this.rua, ff.buscarCliente(this.cpf).getEndereco()
+		assertEquals(c.getEndereco().getRua(), ff.buscarCliente(c.getCPF()).getEndereco()
 				.getRua());
 	}
 
 	@Test
 	public void testeNumeroDaCadaDoCliente() {
-		assertEquals(this.numero, ff.buscarCliente(this.cpf).getEndereco()
+		assertEquals(c.getEndereco().getNumero(), ff.buscarCliente(c.getCPF()).getEndereco()
 				.getNumero());
 	}
 
 	@Test
 	public void testeClienteRemovido() {
-		assertEquals(true, ff.removerCliente(this.cpf));
+		assertEquals(true, ff.removerCliente(c.getCPF()));
 	}
 
 	@Test
 	public void testeBairroDoCliente() {
-		assertEquals(this.bairro, ff.buscarCliente(this.cpf).getEndereco()
+		assertEquals(c.getEndereco().getBairro(), ff.buscarCliente(c.getCPF()).getEndereco()
 				.getBairro());
 	}
 
 	@Test
 	public void testaReferenciaDoCliente() {
-		assertEquals(this.referencia, ff.buscarCliente(this.cpf).getEndereco()
+		assertEquals(c.getEndereco().getReferencia(), ff.buscarCliente(c.getCPF()).getEndereco()
 				.getReferencia());
 	}
 
 	@Test(expected = ClienteJaCadastradoException.class)
 	public void excecaoDeProdutoJaExistente()
 			throws ClienteJaCadastradoException {
-		ff.cadastrarCliente(numero, nome, rua, bairro, telefone, referencia,
-				cpf);
+		ff.cadastrarCliente(c);
 
 	}
+	
+	
 }

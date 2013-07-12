@@ -65,5 +65,10 @@ public class TesteProduto {
 				this.precoDefault);
 		System.out.println(ff.getNumeroDeProdutos());
 	}
+	
+	@Test  // (expected = ValorInvalidoException.class)
+	public void excecaoDeNomeComNumeros(){
+		ff.cadastrarProduto( "sifu", 21, this.precoDefault);
+	}
 
 }
