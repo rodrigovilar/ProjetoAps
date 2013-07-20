@@ -3,11 +3,11 @@ package br.ufpb.dce.aps.fachada;
 import java.util.List;
 
 import br.ufpb.dce.aps.controles.ControleCliente;
-import br.ufpb.dce.aps.controles.ControleContas;
+
 import br.ufpb.dce.aps.controles.ControleNotificacao;
 import br.ufpb.dce.aps.controles.ControleProduto;
 import br.ufpb.dce.aps.controles.ControleVendas;
-import br.ufpb.dce.aps.controles.ControleVendedor;
+
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
@@ -19,21 +19,21 @@ public class FachadaFiado {
 
 	private ControleCliente controlCliente;
 
-	private ControleVendedor controlVendedor;
+	
 
 	private ControleProduto controlProd;
 
 	private ControleNotificacao controlNot;
 
-	private ControleContas controlCont;
+	
 
 	public FachadaFiado() {
 		this.controlVenda = new ControleVendas();
 		this.controlCliente = new ControleCliente();
-		this.controlVendedor = new ControleVendedor();
+		
 		this.controlProd = new ControleProduto();
 		this.controlNot = new ControleNotificacao();
-		this.controlCont = new ControleContas();
+		
 
 	}
 
@@ -76,8 +76,7 @@ public class FachadaFiado {
 
 	}
 
-	public ControleCliente ControleCliente() {
-		return this.controlCliente;
+	public List<Cliente> listarClientes() {
+		return this.controlCliente.listarClientes();
 	}
-
 }

@@ -14,8 +14,8 @@ public class ControleCliente {
 	public void cadastrarCliente(Cliente c) throws ClienteJaCadastradoException {
 
 		// se lista vazia ou cliente não existente
-		if ((this.clientes.isEmpty()) ||  (c.getCPF() != this.buscarCliente(c.getCPF()).getCPF())) 
-			this.clientes.add(c);	 
+		if (this.buscarCliente(c.getCPF()) == null) 
+			this.clientes.add(c); 
 
 		// se ja existe
 		else
@@ -39,9 +39,7 @@ public class ControleCliente {
 	}
 
 	public List<Cliente> listarClientes() {
-		if (!this.clientes.isEmpty())
-			return this.clientes;
-		return null;
+		return this.clientes;
 	}
 
 

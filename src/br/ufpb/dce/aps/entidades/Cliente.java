@@ -1,31 +1,45 @@
 package br.ufpb.dce.aps.entidades;
 
-import java.util.Date;
+
+public class Cliente {
+
+	private String nome;
+	private Endereco endereco;
+	private String telefone;
+	private String CPF;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 
-public class Cliente extends Pessoa {
+	public String getTelefone() {
+		return telefone;
+	}
 
-	private Date dataCobranca;
-	private Conta conta;
-
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	
-	public Date getDataCobranca() {
-		return dataCobranca;
+	public String getCPF(){
+		return this.CPF;
 	}
 
-	public void setDataCobranca(Date dataCobranca) {
-		this.dataCobranca = dataCobranca;
+	public void setCPF(String cPF) {
+		CPF = cPF;
 	}
-
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-
-	
 	
 
 }

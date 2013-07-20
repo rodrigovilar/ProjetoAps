@@ -1,25 +1,21 @@
 package br.ufpb.dce.aps.controles;
 
-import br.ufpb.dce.aps.entidades.Notificacao;
+import br.ufpb.dce.aps.entidades.Cobranca;
+
+
 
 public class ControleNotificacao {
 
-	private Notificacao notificacao;
+	
 
-	public void ativarDesativarNotificacao(Notificacao tipo, boolean ativa) {
+	public void ativarDesativarNotificacao(Cobranca cobranca, boolean ativa) {
 
 	}
 
-	public String exibrFormulario(Notificacao notificacao) {
+	public String exibrFormulario(Cobranca notificacao) {
 		return null;
 	}
 
-	public Notificacao getNotificacao() {
-		return notificacao;
-	}
-
-	public void setNotificacao(Notificacao notificacao) {
-		this.notificacao = notificacao;
-	}
+	
 
 }
