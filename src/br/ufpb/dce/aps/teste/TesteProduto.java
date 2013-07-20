@@ -5,70 +5,66 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
+import br.ufpb.dce.aps.exception.ValorInvalidoException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteProduto {
 
-	// valor abaixo feito para ser setado ao produto no setCodigo
-	private int codigoDefault;
-
-	// nome do produto
-	private String nomeDoProduto;
-
-	// valor abaixo feito para ser
-	private float precoDefault;
-
+	
 	FachadaFiado ff;
+	Produto p;
 
 	/**
 	 * ja cadastro um produto aki no before. Isso simplifica os testes
 	 */
 	@Before
 	public void setUp() {
-		this.codigoDefault = 1;
-		this.nomeDoProduto = "Nal";
-		this.precoDefault = 200;
+		
+		p= new Produto();
+		p.setCodigo("12");
+		p.setNome("Nal");
+		p.setPreco(200);
 
 		ff = new FachadaFiado();
-		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault,
-				this.precoDefault);
+		ff.cadastrarProduto(p);
 
 	}
 
 	@Test
 	public void verSeOProdutoEstaCadastrado() {
-		assertEquals(1, ff.buscarProduto(this.codigoDefault).getCodigo());
+		assertEquals(p.getCodigo(), ff.buscarProduto(p.getCodigo()).getCodigo());
 
 	}
 
 	@Test
 	public void verSeProdutoTemNome() {
-		assertEquals(this.nomeDoProduto, ff.buscarProduto(this.codigoDefault)
+		assertEquals(p.getNome(), ff.buscarProduto(p.getCodigo())
 				.getNome());
 	}
 
 	@Test
 	public void verificaPrecoDoProduto() {
-		assertEquals(this.precoDefault, ff.buscarProduto(this.codigoDefault)
+		assertEquals(p.getPreco(), ff.buscarProduto(p.getCodigo())
 				.getPreco(), 0.1);
 	}
 
 	@Test
 	public void verificaSeRemoveProduto() {
-		assertEquals(true, ff.removerProduto(this.codigoDefault));
+		assertEquals(true, ff.removerProduto(p.getCodigo()));
 	}
 
 	@Test(expected = ProdutoJaCadastradoException.class)
 	public void excecaoDeProdutoJaExistente() {
-		ff.cadastrarProduto(this.nomeDoProduto, this.codigoDefault,
-				this.precoDefault);
+		ff.cadastrarProduto(p);
 		System.out.println(ff.getNumeroDeProdutos());
 	}
 	
-	@Test  // (expected = ValorInvalidoException.class)
+	@Test   (expected = ValorInvalidoException.class)
 	public void excecaoDeNomeComNumeros(){
-		ff.cadastrarProduto( "sifu", 21, this.precoDefault);
+		p.setNome("987");
+		ff.cadastrarProduto(p);
 	}
 
 }

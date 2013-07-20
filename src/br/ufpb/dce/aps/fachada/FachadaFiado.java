@@ -39,16 +39,16 @@ public class FachadaFiado {
 
 	// Controle de produtos
 
-	public void cadastrarProduto(String nome, int cod, float preco)
+	public void cadastrarProduto(Produto p)
 			throws ProdutoJaCadastradoException {
-		this.controlProd.cadastrarProduto(nome, cod, preco);
+		this.controlProd.cadastrarProduto(p);
 	}
 
-	public Produto buscarProduto(int cod) {
+	public Produto buscarProduto(String cod) {
 		return this.controlProd.buscarProduto(cod);
 	}
 
-	public boolean removerProduto(int cod) {
+	public boolean removerProduto(String cod) {
 		return this.controlProd.removerProduto(cod);
 	}
 
@@ -58,6 +58,9 @@ public class FachadaFiado {
 
 	public int getNumeroDeProdutos() {
 		return this.controlProd.getNumeroDeProdutos();
+	}
+	public List<Produto> exibirEstoque(){
+		return this.controlProd.exibirEstoqueDeProdutos();
 	}
 
 	// controle de clientes

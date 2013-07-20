@@ -4,7 +4,7 @@ public class Produto {
 
 	private String nome;
 
-	private int codigo;
+	private String codigo;
 
 	private float preco;
 
@@ -16,11 +16,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
