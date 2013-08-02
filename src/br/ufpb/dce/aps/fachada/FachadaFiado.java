@@ -4,12 +4,14 @@ import java.util.List;
 
 import br.ufpb.dce.aps.controles.ControleCliente;
 
-import br.ufpb.dce.aps.controles.ControleNotificacao;
+import br.ufpb.dce.aps.controles.ControleCobranca;
 import br.ufpb.dce.aps.controles.ControleProduto;
 import br.ufpb.dce.aps.controles.ControleVendas;
 
 import br.ufpb.dce.aps.entidades.Cliente;
+import br.ufpb.dce.aps.entidades.Cobranca;
 import br.ufpb.dce.aps.entidades.Produto;
+import br.ufpb.dce.aps.entidades.Venda;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 
@@ -19,11 +21,9 @@ public class FachadaFiado {
 
 	private ControleCliente controlCliente;
 
-	
+	private ControleProduto controlProduto;
 
-	private ControleProduto controlProd;
-
-	private ControleNotificacao controlNot;
+	private ControleCobranca controleCobranca;
 
 	
 
@@ -31,36 +31,54 @@ public class FachadaFiado {
 		this.controlVenda = new ControleVendas();
 		this.controlCliente = new ControleCliente();
 		
-		this.controlProd = new ControleProduto();
-		this.controlNot = new ControleNotificacao();
+		this.controlProduto = new ControleProduto();
+		this.controleCobranca = new ControleCobranca();
 		
 
+	}
+	// controleCobranca
+	public void addCobranca(List<Cobranca> cobranca, String idVenda){
+		 this.controleCobranca.addCobranca(cobranca, idVenda);
+	}
+	public List<Cobranca> exibirCobranca(String idVenda){
+		return this.controleCobranca.exibirCobranca(idVenda);
+	}
+	// controleVendas
+	public boolean venda(Venda venda){
+		return this.controlVenda.venda(venda);
+	}
+	public boolean removerVenda(Venda venda){
+		return this.controlVenda.removerProduto(venda);
+	}
+	
+	public List<Venda> listarVendasRalizadas(){
+		return this.controlVenda.listarVendasRealizadas();
 	}
 
 	// Controle de produtos
 
 	public void cadastrarProduto(Produto p)
 			throws ProdutoJaCadastradoException {
-		this.controlProd.cadastrarProduto(p);
+		this.controlProduto.cadastrarProduto(p);
 	}
 
 	public Produto buscarProduto(String cod) {
-		return this.controlProd.buscarProduto(cod);
+		return this.controlProduto.buscarProduto(cod);
 	}
 
 	public boolean removerProduto(String cod) {
-		return this.controlProd.removerProduto(cod);
+		return this.controlProduto.removerProduto(cod);
 	}
 
 	public List<Produto> exibirEstoqueDeProdutos() {
-		return this.controlProd.exibirEstoqueDeProdutos();
+		return this.controlProduto.exibirEstoqueDeProdutos();
 	}
 
 	public int getNumeroDeProdutos() {
-		return this.controlProd.getNumeroDeProdutos();
+		return this.controlProduto.getNumeroDeProdutos();
 	}
 	public List<Produto> exibirEstoque(){
-		return this.controlProd.exibirEstoqueDeProdutos();
+		return this.controlProduto.exibirEstoqueDeProdutos();
 	}
 
 	// controle de clientes

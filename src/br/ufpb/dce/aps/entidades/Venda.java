@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Venda {
 
-	private short idVenda;
+	private String idVenda;
 
 	private Cliente cliente;
 
-	private List<Produto> produtos = new ArrayList<Produto>();
+	private List<Item> itens = new ArrayList<Item>();
 
 	private float valor;
 
-	public short getIdVenda() {
+	public String getIdVenda() {
 		return idVenda;
 	}
 
-	public void setIdVenda(short idVenda) {
+	public void setIdVenda(String idVenda) {
 		this.idVenda = idVenda;
 	}
 
@@ -29,12 +29,12 @@ public class Venda {
 		this.cliente = cliente;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public List<Item> getItems() {
+		return itens;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setItems(List<Item> itens) {
+		this.itens = itens;
 	}
 
 	public float getValor() {

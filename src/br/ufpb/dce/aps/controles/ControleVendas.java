@@ -1,5 +1,6 @@
 package br.ufpb.dce.aps.controles;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import br.ufpb.dce.aps.entidades.Cliente;
@@ -8,27 +9,21 @@ import br.ufpb.dce.aps.entidades.Venda;
 
 public class ControleVendas {
 
-	private List<Venda> listaVendas;
+	private List<Venda> listaVendas = new LinkedList<Venda>();
 
-	public void adicionarProdutoCliente(Venda venda, Cliente cliente,
-			Produto prod) {
+	public boolean venda(Venda venda) {
 
+		return this.listaVendas.add(venda);
 	}
 
-	public void removerProdutoCliente(Venda venda, Cliente cliente, int codProd) {
-
+	public boolean removerProduto(Venda venda) {
+		
+		return this.listaVendas.remove(venda);
 	}
 
-	public void exibirDadosPosVenda(Venda venda) {
-
-	}
-
-	public void efetuarVenda(Venda venda) {
-
-	}
 
 	public List<Venda> listarVendasRealizadas() {
-		return null;
+		return this.listaVendas;
 	}
 
 }
