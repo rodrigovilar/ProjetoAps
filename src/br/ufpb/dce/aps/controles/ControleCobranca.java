@@ -11,15 +11,17 @@ import java.util.Map;
 
 public class ControleCobranca {
 
-	public Map<String , List<Cobranca>> mapaDeCobranças = new HashMap <String,List<Cobranca>>();	
+	public Map<String , Cobranca> mapaDeCobranças = 
+			new HashMap <String,Cobranca>();	
 
-	public void addCobranca(List<Cobranca> cobranca, String idVenda) {
+	//não posso ter uma outra cobrança com um mesmo id de venda
+	public void addCobranca(Cobranca cobranca, String idVenda) {
 		
 		this.mapaDeCobranças.put(idVenda, cobranca);
 		
 	}
 
-	public List<Cobranca> exibirCobranca(String idVenda) {
+	public Cobranca exibirCobranca(String idVenda) {
 		return this.mapaDeCobranças.get(idVenda);
 	}
 

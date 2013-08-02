@@ -37,18 +37,21 @@ public class FachadaFiado {
 
 	}
 	// controleCobranca
-	public void addCobranca(List<Cobranca> cobranca, String idVenda){
+	public void addCobranca(Cobranca cobranca, String idVenda){
 		 this.controleCobranca.addCobranca(cobranca, idVenda);
 	}
-	public List<Cobranca> exibirCobranca(String idVenda){
+	public Cobranca exibirCobranca(String idVenda){
 		return this.controleCobranca.exibirCobranca(idVenda);
 	}
-	// controleVendas
-	public boolean venda(Venda venda){
-		return this.controlVenda.venda(venda);
+	// controle Vendas
+	public Venda buscarVenda(String idVenda){
+		return this.controlVenda.buscarVenda(idVenda);
 	}
-	public boolean removerVenda(Venda venda){
-		return this.controlVenda.removerProduto(venda);
+	public boolean vender(Venda venda){
+		return this.controlVenda.vender(venda);
+	}
+	public boolean removerVenda(String idVenda){
+		return this.controlVenda.removerVenda(idVenda);
 	}
 	
 	public List<Venda> listarVendasRalizadas(){
