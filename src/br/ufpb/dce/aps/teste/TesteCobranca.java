@@ -2,6 +2,8 @@ package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -66,10 +68,7 @@ public class TesteCobranca {
 		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
 
 	}
-
-
-
-
+// 
 	@Test
 	public void checkCobranca(){
 		assertEquals(this.cobranca, this.ff.exibirCobranca(this.venda.getIdVenda()));
@@ -79,6 +78,12 @@ public class TesteCobranca {
 	@Test (expected = VendaException.class) // lançar exceção
 	public void checkVendaException(){
 		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
+	}
+	
+	@Test
+	public void checkDebitosDoCliente(){
+		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente.getCPF());
+		assertEquals(this.cobranca,lista.get(0));
 	}
 
 

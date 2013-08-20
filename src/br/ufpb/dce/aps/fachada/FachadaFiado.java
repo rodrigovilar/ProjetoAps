@@ -14,6 +14,7 @@ import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.entidades.Venda;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
+import br.ufpb.dce.aps.exception.VendaException;
 
 public class FachadaFiado {
 
@@ -37,11 +38,14 @@ public class FachadaFiado {
 
 	}
 	// controleCobranca
-	public void addCobranca(Cobranca cobranca, String idVenda){
+	public void addCobranca(Cobranca cobranca, String idVenda)throws VendaException{
 		 this.controleCobranca.addCobranca(cobranca, idVenda);
 	}
 	public Cobranca exibirCobranca(String idVenda){
 		return this.controleCobranca.exibirCobranca(idVenda);
+	}
+	public List<Cobranca> listarDebitosDoCliente(String CPF){
+		return this.controleCobranca.listarDebitosDeCliente(CPF);
 	}
 	// controle Vendas
 	public Venda buscarVenda(String idVenda){
