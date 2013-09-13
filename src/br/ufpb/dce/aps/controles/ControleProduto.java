@@ -51,7 +51,7 @@ public class ControleProduto {
 
 	private boolean ehValido(String nome, String codigo) {
 		// testador de entrada de parâmetros
-		if ((nome.matches("[A-Za-z]{" + nome.length() + "}")) && (codigo.matches("[0-9]{" + codigo.length() + "}")))
+		if ((nome.matches("[A-Za-z]{" + nome.length() + "}")) && (codigo.matches("[0-9]{" + codigo.trim().length() + "}")))
 			return true;
 		return false;
 	}

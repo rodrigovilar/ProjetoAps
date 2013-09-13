@@ -1,6 +1,8 @@
 package br.ufpb.dce.aps.teste;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +14,7 @@ import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteProduto {
 
-	
+	public static final String CODIGO_CADASTRADO = "12"; 
 	FachadaFiado ff;
 	Produto p;
 
@@ -23,7 +25,7 @@ public class TesteProduto {
 	public void setUp() {
 		
 		p= new Produto();
-		p.setCodigo("12");
+		p.setCodigo(CODIGO_CADASTRADO);
 		p.setNome("Nal");
 		p.setPreco(200);
 
@@ -34,10 +36,60 @@ public class TesteProduto {
 
 	@Test
 	public void verSeOProdutoEstaCadastrado() {
-		assertEquals(p.getCodigo(), ff.buscarProduto(p.getCodigo()).getCodigo());
+		assertEquals(p, ff.buscarProduto(p.getCodigo()));
 
 	}
+	@Test
+	public void checkQuantidadeDeItens(){
+		assertEquals(ff.getNumeroDeProdutos(), 1);
+		
+		p= new Produto();
+		p.setCodigo("1");
+		p.setNome("duza");
+		p.setPreco(100);
+		
+		ff.cadastrarProduto(p);
+		
+		assertEquals(ff.getNumeroDeProdutos(), 2);
+	}
+	
+	@Test
+	public void checkProdutoNaoCadastrado(){
+		assertNull(ff.buscarProduto("321"));
+	}
+	
+	@Test
+	public void checkRemoverProduto(){
+		ff.removerProduto(CODIGO_CADASTRADO);
+		assertNull(ff.buscarProduto(CODIGO_CADASTRADO));
+	}
+	
+	@Test
+	public void removerProdutoInexistente(){
+		assertFalse(ff.removerProduto("1"));
+	}
+	
+	
+	@Test
+	public void verNumeroDeprodutos(){
+		assertEquals(ff.exibirEstoqueDeProdutos().size(), 1);
+		
+		p=new Produto();
+		p.setCodigo("13");
+		p.setNome("duza");
+		p.setPreco(140);
+		ff.cadastrarProduto(p);
+		
+		assertEquals(ff.exibirEstoqueDeProdutos().size(), 2);
+	}
+	
+	@Test
+	public void testEstoque(){
+		assertEquals(ff.exibirEstoque().get(0), p);
+	}
+	
 
+	// check atributos
 	@Test
 	public void verSeProdutoTemNome() {
 		assertEquals(p.getNome(), ff.buscarProduto(p.getCodigo())
@@ -58,12 +110,17 @@ public class TesteProduto {
 	@Test(expected = ProdutoJaCadastradoException.class)
 	public void excecaoDeProdutoJaExistente() {
 		ff.cadastrarProduto(p);
-		System.out.println(ff.getNumeroDeProdutos());
+
 	}
 	
 	@Test   (expected = ValorInvalidoException.class)
 	public void excecaoDeNomeComNumeros(){
 		p.setNome("987");
+		ff.cadastrarProduto(p);
+	}
+	@Test (expected = ValorInvalidoException.class)
+	public void excecaoDeCodigoComLetras(){
+		p.setCodigo("abs");
 		ff.cadastrarProduto(p);
 	}
 
