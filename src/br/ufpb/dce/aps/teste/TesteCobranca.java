@@ -15,6 +15,7 @@ import br.ufpb.dce.aps.entidades.Venda;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 import br.ufpb.dce.aps.entidades.Endereco;
 import br.ufpb.dce.aps.exception.VendaException;
+import br.ufpb.dce.aps.exception.ValorInvalidoException;
 
 public class TesteCobranca {
 
@@ -85,7 +86,11 @@ public class TesteCobranca {
 		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente.getCPF());
 		assertEquals(this.cobranca,lista.get(0));
 	}
-
+	
+	@Test (expected = ValorInvalidoException.class)
+	public void checkDebitosDoClienteExcecao(){
+		List<Cobranca> lista = this.ff.listarDebitosDoCliente("asd");
+	}
 
 
 }

@@ -1,6 +1,7 @@
 package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
@@ -26,7 +27,7 @@ public class TesteCliente {
 		e= new Endereco("1000" , "quinta Avenida", "centro", "longe de tudo");
 	
 		this.c.setTelefone("234");
-		this.c.setCPF("098765432-12") ;
+		this.c.setCPF("09876543212") ;
 		this.c.setNome("Vinicius");
 		this.c.setEndereco(e);
 
@@ -34,6 +35,8 @@ public class TesteCliente {
 		ff.cadastrarCliente(c);
 
 	}
+	
+	//testes com cadastros de clientes
 	
 	@Test(expected = ClienteJaCadastradoException.class)
 	public void testCadastrarCliente() throws ClienteJaCadastradoException {
@@ -54,6 +57,9 @@ public class TesteCliente {
 		assertEquals(2, ff.listarClientes().size());
 	}
 	
+
+	
+	// testes no metodo remove
 	@Test
 	public void testRemoverCliente() {
 		assertEquals(1, ff.listarClientes().size());
@@ -61,26 +67,37 @@ public class TesteCliente {
 		ff.removerCliente("12345678901");
 		assertEquals(1, ff.listarClientes().size());
 		
-		ff.removerCliente("098765432-12");
+		ff.removerCliente("09876543212");
 		assertEquals(0, ff.listarClientes().size());
 	}
+	@Test
+	public void removerClienteNaoCadastrado(){
+		assertFalse(ff.removerCliente("12312312312"));
+	}
 
+	// testes em buscas
 	@Test
 	public void testBuscarCliente() {
-		assertEquals(c, ff.buscarCliente("098765432-12"));
+		assertEquals(c, ff.buscarCliente("09876543212"));
 
 		assertNull(ff.buscarCliente("12345678901"));
 	}
+	@Test
+	public void buscarClienteInexistente(){
+		assertNull(ff.buscarCliente("12312312312"));
+	}
 	
+	//teste no listar
 	@Test
 	public void testListarClientes() {
 		assertEquals(1, ff.listarClientes().size());
 		
-		ff.removerCliente("098765432-12");
+		ff.removerCliente("09876543212");
 		
 		assertEquals(0, ff.listarClientes().size());
 	}
 	
+	// testes nos atributos
 	@Test
 	public void testeNomeDoCliente() {
 		assertEquals(c.getNome(), ff.buscarCliente(c.getCPF()).getNome());
@@ -126,7 +143,7 @@ public class TesteCliente {
 	}
 
 	@Test(expected = ClienteJaCadastradoException.class)
-	public void excecaoDeProdutoJaExistente()
+	public void excecaoDeClienteJaExistente()
 			throws ClienteJaCadastradoException {
 		ff.cadastrarCliente(c);
 

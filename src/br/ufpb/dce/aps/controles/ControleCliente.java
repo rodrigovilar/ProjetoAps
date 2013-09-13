@@ -5,10 +5,12 @@ import java.util.List;
 
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Endereco;
+import br.ufpb.dce.aps.exception.CPFInvalidoException;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
 
 public class ControleCliente {
 
+	public static final int TAMANHO_DO_CPF = 11;
 	private List<Cliente> clientes = new LinkedList<Cliente>();
 
 	public void cadastrarCliente(Cliente c) throws ClienteJaCadastradoException {
@@ -23,23 +25,41 @@ public class ControleCliente {
 
 	}
 
-	public Cliente buscarCliente(String cpf) {
-		for (Cliente p : clientes)
-			if (p.getCPF() == cpf)
-				return p;
+	public Cliente buscarCliente(String cpf) throws CPFInvalidoException{
+		boolean teste = this.ehValido(cpf);
+		if(!teste)
+			throw new CPFInvalidoException("CPF inválido");
+		else
+			for (Cliente p : clientes)
+				if (p.getCPF() == cpf)
+					return p;
+
 		return null;
 	}
 
-	public boolean removerCliente(String CPF) {
-		Cliente c = this.buscarCliente(CPF);
-		if (c != null) {
-			return this.clientes.remove(c);
+	public boolean removerCliente(String CPF) throws CPFInvalidoException{
+		boolean teste = this.ehValido(CPF);
+		if(!teste)
+			throw new CPFInvalidoException("cpf inválido");
+		else{
+			Cliente c = this.buscarCliente(CPF);
+			if (c != null) {
+				return this.clientes.remove(c);
+			}
+			return false;
 		}
-		return false;
 	}
-
+	
 	public List<Cliente> listarClientes() {
 		return this.clientes;
+	}
+
+	private boolean ehValido(String cpf){
+		// testador de entrada de parâmetros para busca, adição e remoção
+		if ((cpf.matches("[0-9]{" + cpf.length() + "}"))&& cpf.trim().length()== 
+				this.TAMANHO_DO_CPF)
+			return true;
+		return false;
 	}
 
 
