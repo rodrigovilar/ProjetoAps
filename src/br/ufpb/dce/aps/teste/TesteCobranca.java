@@ -76,10 +76,13 @@ public class TesteCobranca {
 		
 	}
 	
-	@Test (expected = VendaException.class) // lançar exceção
-	public void checkVendaException(){
-		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
+	@Test 
+	public void verificarValorDaVenda(){
+		Cobranca cobranca = ff.exibirCobranca(this.venda.getIdVenda());
+		assertEquals(this.venda.getValor(), this.cobranca.getVenda().getValor(),1);
 	}
+	
+	
 	
 	@Test
 	public void checkDebitosDoCliente(){
@@ -89,7 +92,13 @@ public class TesteCobranca {
 	
 	@Test (expected = ValorInvalidoException.class)
 	public void checkDebitosDoClienteExcecao(){
+		// metodo listar aceita apenas números
 		List<Cobranca> lista = this.ff.listarDebitosDoCliente("asd");
+	}
+	
+	@Test (expected = VendaException.class) // lançar exceção
+	public void repetirVenda(){
+		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
 	}
 
 

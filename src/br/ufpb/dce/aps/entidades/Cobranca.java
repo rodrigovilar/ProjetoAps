@@ -7,7 +7,7 @@ public class Cobranca {
 	
 	private Calendar dataPagamento;
 	private Venda venda ;
-	private boolean pagamentoEfetuado;
+	private boolean pagamentoEfetuado;   // TRATAR ISSO AQUI
 	public Calendar getDataPagamento() {
 		return dataPagamento;
 	}
