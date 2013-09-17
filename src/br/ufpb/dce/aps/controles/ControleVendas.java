@@ -16,6 +16,7 @@ public class ControleVendas {
 		if(this.buscarVenda(venda.getIdVenda())== null)
 			return this.listaVendas.add(venda);
 		else
+			// não pode vender duas vezes a mesma coisa
 			throw new VendaException("Venda Exception");
 	}
 
