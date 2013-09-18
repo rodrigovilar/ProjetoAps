@@ -1,15 +1,12 @@
 package br.ufpb.dce.aps.teste;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
-import com.sun.imageio.plugins.common.I18N;
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Endereco;
@@ -26,48 +23,47 @@ public class TesteVenda {
 	private Produto produto;
 	private Endereco endereco;
 	private Cliente cliente;
-	
+
 	public static final String CODIGO_PRODUTO = "sifu";
-	public static final String CODIGO_VENDA= "naifu";
-	public static final String CPF= "12345678901";
-	
+	public static final String CODIGO_VENDA = "naifu";
+	public static final String CPF = "12345678901";
+
 	@Before
-	public void setUp(){
-		
+	public void setUp() {
+
 		this.endereco = new Endereco("12", "Rua", "Bairro", "referencia");
-		
+
 		this.cliente = new Cliente();
 		this.cliente.setCPF(CPF);
 		this.cliente.setNome("duza");
 		this.cliente.setTelefone("098909879");
 		this.cliente.setEndereco(this.endereco);
-		
+
 		this.produto = new Produto();
-		this.produto.setCodigo(this.CODIGO_PRODUTO);
+		this.produto.setCodigo(CODIGO_PRODUTO);
 		this.produto.setNome("NAL");
 		this.produto.setPreco(100);
-		
+
 		this.item = new Item();
 		this.item.setProduto(this.produto);
 		this.item.setQuantidade(20);
-		
+
 		List<Item> carrinhoDeCompras = new LinkedList<Item>();
 		carrinhoDeCompras.add(this.item);
-		
+
 		this.venda = new Venda();
-		this.venda.setIdVenda(this.CODIGO_VENDA);
+		this.venda.setIdVenda(CODIGO_VENDA);
 		this.venda.setValor(400);
 		this.venda.setItems(carrinhoDeCompras);
 		this.venda.setCliente(this.cliente);
-		
+
 		this.ff = new FachadaFiado();
 		ff.vender(this.venda);
 	}
-	
-	
+
 	@Test
-	public void checkVendaRealizada(){
-		assertEquals(true , ff.buscarVenda(venda.getIdVenda()));
+	public void checkVendaRealizada() {
+		assertEquals(true, ff.buscarVenda(venda.getIdVenda()));
 	}
 
 }

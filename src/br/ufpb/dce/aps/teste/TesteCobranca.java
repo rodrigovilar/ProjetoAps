@@ -9,26 +9,26 @@ import org.junit.Test;
 
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Cobranca;
+import br.ufpb.dce.aps.entidades.Endereco;
 import br.ufpb.dce.aps.entidades.Item;
 import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.entidades.Venda;
-import br.ufpb.dce.aps.fachada.FachadaFiado;
-import br.ufpb.dce.aps.entidades.Endereco;
-import br.ufpb.dce.aps.exception.VendaException;
 import br.ufpb.dce.aps.exception.ValorInvalidoException;
+import br.ufpb.dce.aps.exception.VendaException;
+import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteCobranca {
 
 	private FachadaFiado ff;
 	private Cobranca cobranca;
 	private Venda venda;
-	private Item item ;
+	private Item item;
 	private Produto produto;
 	private Cliente cliente;
-	
+
 	@Before
-	public void setUp(){
-		//creator
+	public void setUp() {
+		// creator
 		this.ff = new FachadaFiado();
 		this.cobranca = new Cobranca();
 		this.venda = new Venda();
@@ -38,68 +38,74 @@ public class TesteCobranca {
 
 		Endereco e = new Endereco("13", "mangueira", "sifu", null);
 
-		//produto
+		// produto
 		this.produto.setCodigo("12343");
 		this.produto.setNome("sabão");
 		this.produto.setPreco(12);
 
-		//item
+		// item
 		this.item.setProduto(this.produto);
 		this.item.setQuantidade(5);
 
-		//cliente
+		// cliente
 		this.cliente.setCPF("12345678912");
 		this.cliente.setEndereco(e);
 		this.cliente.setNome("Vinicius");
 		this.cliente.setTelefone("09093392");
 
-		//venda
+		// venda
 		this.venda.setIdVenda("123432");
 		this.venda.setCliente(this.cliente);
 		this.venda.setCliente(this.cliente);
 		this.venda.setValor(150);
 
-		//cobranca
+		// cobranca
 		this.cobranca.setDataPagamento(null);
-		this.cobranca.setPagamentoEfetuado(false);	
+		this.cobranca.setPagamentoEfetuado(false);
 		this.cobranca.setVenda(this.venda);
-		
-		//cadastrar cobrança
-		
-		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
+
+		// cadastrar cobrança
+
+		this.ff.addCobranca(this.cobranca, this.venda.getIdVenda());
 
 	}
-// 
+
+	//
 	@Test
-	public void checkCobranca(){
-		assertEquals(this.cobranca, this.ff.exibirCobranca(this.venda.getIdVenda()));
-		
+	public void checkCobranca() {
+		assertEquals(this.cobranca,
+				this.ff.exibirCobranca(this.venda.getIdVenda()));
+
 	}
-	
-	@Test 
-	public void verificarValorDaVenda(){
+
+	@Test
+	public void verificarValorDaVenda() {
 		Cobranca cobranca = ff.exibirCobranca(this.venda.getIdVenda());
-		assertEquals(this.venda.getValor(), this.cobranca.getVenda().getValor(),1);
-	}
-	
-	
-	
-	@Test
-	public void checkDebitosDoCliente(){
-		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente.getCPF());
-		assertEquals(this.cobranca,lista.get(0));
-	}
-	
-	@Test (expected = ValorInvalidoException.class)
-	public void checkDebitosDoClienteExcecao(){
-		// metodo listar aceita apenas números
-		List<Cobranca> lista = this.ff.listarDebitosDoCliente("asd");
-	}
-	
-	@Test (expected = VendaException.class) // lançar exceção
-	public void repetirVenda(){
-		this.ff.addCobranca(this.cobranca,this.venda.getIdVenda());
+		assertEquals(this.venda.getValor(), cobranca.getVenda().getValor(), 1);
 	}
 
+	@Test
+	public void checkDebitosDoCliente() {
+		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente
+				.getCPF());
+		assertEquals(this.cobranca, lista.get(0));
+	}
+
+	@Test(expected = ValorInvalidoException.class)
+	public void checkDebitosDoClienteExcecao() {
+		// metodo listar aceita apenas números
+
+		// TODO
+		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente
+				.getCPF());
+		assertEquals(1, lista.size());
+
+	}
+
+	@Test(expected = VendaException.class)
+	// lançar exceção
+	public void repetirVenda() {
+		this.ff.addCobranca(this.cobranca, this.venda.getIdVenda());
+	}
 
 }
