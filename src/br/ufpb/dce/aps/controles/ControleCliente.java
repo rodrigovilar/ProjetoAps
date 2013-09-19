@@ -6,6 +6,7 @@ import java.util.List;
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.exception.CPFInvalidoException;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
+import br.ufpb.dce.aps.exception.ClienteNaoCadastradoException;
 
 public class ControleCliente {
 
@@ -36,7 +37,8 @@ public class ControleCliente {
 		return null;
 	}
 
-	public boolean removerCliente(String CPF) throws CPFInvalidoException {
+	public boolean removerCliente(String CPF) throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		boolean teste = this.ehValido(CPF);
 		if (!teste)
 			throw new CPFInvalidoException("cpf inválido");
@@ -44,8 +46,9 @@ public class ControleCliente {
 			Cliente c = this.buscarCliente(CPF);
 			if (c != null) {
 				return this.clientes.remove(c);
+			} else {
+				throw new ClienteNaoCadastradoException();
 			}
-			return false;
 		}
 	}
 

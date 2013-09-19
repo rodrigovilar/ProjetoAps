@@ -1,7 +1,6 @@
 package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
@@ -9,7 +8,9 @@ import org.junit.Test;
 
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Endereco;
+import br.ufpb.dce.aps.exception.CPFInvalidoException;
 import br.ufpb.dce.aps.exception.ClienteJaCadastradoException;
+import br.ufpb.dce.aps.exception.ClienteNaoCadastradoException;
 import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteCliente {
@@ -59,19 +60,22 @@ public class TesteCliente {
 
 	// testes no metodo remove
 	@Test
-	public void testRemoverCliente() {
+	public void testRemoverCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException, ClienteJaCadastradoException {
+		Cliente cliente = new Cliente();
+		cliente.setCPF("12345678911");
+		ff.cadastrarCliente(cliente);
+		assertEquals(2, ff.listarClientes().size());
+
+		ff.removerCliente("12345678911");
 		assertEquals(1, ff.listarClientes().size());
 
-		ff.removerCliente("12345678901");
-		assertEquals(1, ff.listarClientes().size());
-
-		ff.removerCliente("09876543212");
-		assertEquals(0, ff.listarClientes().size());
 	}
 
-	@Test
-	public void removerClienteNaoCadastrado() {
-		assertFalse(ff.removerCliente("12312312312"));
+	@Test(expected = ClienteNaoCadastradoException.class)
+	public void removerClienteNaoCadastrado() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
+		assertEquals(true, ff.removerCliente("12312312312"));
 	}
 
 	// testes em buscas
@@ -89,7 +93,8 @@ public class TesteCliente {
 
 	// teste no listar
 	@Test
-	public void testListarClientes() {
+	public void testListarClientes() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
 
 		ff.removerCliente("09876543212");
@@ -127,7 +132,8 @@ public class TesteCliente {
 	}
 
 	@Test
-	public void testeClienteRemovido() {
+	public void testeClienteRemovido() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(true, ff.removerCliente(c.getCPF()));
 	}
 
