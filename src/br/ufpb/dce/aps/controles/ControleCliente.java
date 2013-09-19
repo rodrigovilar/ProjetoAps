@@ -13,7 +13,9 @@ public class ControleCliente {
 	public static final int TAMANHO_DO_CPF = 11;
 	private List<Cliente> clientes = new LinkedList<Cliente>();
 
-	public void cadastrarCliente(Cliente c) throws ClienteJaCadastradoException {
+	public void cadastrarCliente(Cliente c)
+			throws ClienteJaCadastradoException, CPFInvalidoException,
+			ClienteNaoCadastradoException {
 
 		// se lista vazia ou cliente não existente
 		if (this.buscarCliente(c.getCPF()) == null)
@@ -25,7 +27,8 @@ public class ControleCliente {
 
 	}
 
-	public Cliente buscarCliente(String cpf) throws CPFInvalidoException {
+	public Cliente buscarCliente(String cpf) throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		boolean teste = this.ehValido(cpf);
 		if (!teste)
 			throw new CPFInvalidoException("CPF inválido");
@@ -33,6 +36,8 @@ public class ControleCliente {
 			for (Cliente p : clientes)
 				if (p.getCPF() == cpf)
 					return p;
+				else
+					throw new ClienteNaoCadastradoException();
 
 		return null;
 	}

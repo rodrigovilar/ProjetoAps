@@ -22,7 +22,8 @@ public class TesteCliente {
 	private Endereco e;
 
 	@Before
-	public void setUp() throws ClienteJaCadastradoException {
+	public void setUp() throws ClienteJaCadastradoException,
+			CPFInvalidoException, ClienteNaoCadastradoException {
 		ff = new FachadaFiado();
 		c = new Cliente();
 		e = new Endereco("1000", "quinta Avenida", "centro", "longe de tudo");
@@ -40,7 +41,8 @@ public class TesteCliente {
 	// testes com cadastros de clientes
 
 	@Test(expected = ClienteJaCadastradoException.class)
-	public void testCadastrarCliente() throws ClienteJaCadastradoException {
+	public void testCadastrarCliente() throws ClienteJaCadastradoException,
+			CPFInvalidoException, ClienteNaoCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
 
 		Cliente c2 = new Cliente();
@@ -79,15 +81,17 @@ public class TesteCliente {
 	}
 
 	// testes em buscas
-	@Test
-	public void testBuscarCliente() {
+	@Test(expected = ClienteNaoCadastradoException.class)
+	public void testBuscarCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c, ff.buscarCliente("09876543212"));
 
 		assertNull(ff.buscarCliente("12345678901"));
 	}
 
-	@Test
-	public void buscarClienteInexistente() {
+	@Test(expected = ClienteNaoCadastradoException.class)
+	public void buscarClienteInexistente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertNull(ff.buscarCliente("12312312312"));
 	}
 
@@ -104,29 +108,34 @@ public class TesteCliente {
 
 	// testes nos atributos
 	@Test
-	public void testeNomeDoCliente() {
+	public void testeNomeDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getNome(), ff.buscarCliente(c.getCPF()).getNome());
 	}
 
 	@Test
-	public void testeCPFdoCliente() {
+	public void testeCPFdoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getCPF(), ff.buscarCliente(c.getCPF()).getCPF());
 	}
 
 	@Test
-	public void testeTelefoneDoCliente() {
+	public void testeTelefoneDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getTelefone(), ff.buscarCliente(c.getCPF())
 				.getTelefone());
 	}
 
 	@Test
-	public void testeRuaDoCliente() {
+	public void testeRuaDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getRua(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getRua());
 	}
 
 	@Test
-	public void testeNumeroDaCadaDoCliente() {
+	public void testeNumeroDaCadaDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getNumero(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getNumero());
 	}
@@ -138,20 +147,23 @@ public class TesteCliente {
 	}
 
 	@Test
-	public void testeBairroDoCliente() {
+	public void testeBairroDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getBairro(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getBairro());
 	}
 
 	@Test
-	public void testaReferenciaDoCliente() {
+	public void testaReferenciaDoCliente() throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getReferencia(),
 				ff.buscarCliente(c.getCPF()).getEndereco().getReferencia());
 	}
 
 	@Test(expected = ClienteJaCadastradoException.class)
 	public void excecaoDeClienteJaExistente()
-			throws ClienteJaCadastradoException {
+			throws ClienteJaCadastradoException, CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		ff.cadastrarCliente(c);
 
 	}

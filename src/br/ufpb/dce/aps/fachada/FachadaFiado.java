@@ -93,16 +93,19 @@ public class FachadaFiado {
 	}
 
 	// controle de clientes
-	public void cadastrarCliente(Cliente c) throws ClienteJaCadastradoException {
+	public void cadastrarCliente(Cliente c)
+			throws ClienteJaCadastradoException, CPFInvalidoException, ClienteNaoCadastradoException {
 		this.controlCliente.cadastrarCliente(c);
 
 	}
 
-	public boolean removerCliente(String cpf) throws CPFInvalidoException, ClienteNaoCadastradoException {
+	public boolean removerCliente(String cpf) throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		return this.controlCliente.removerCliente(cpf);
 	}
 
-	public Cliente buscarCliente(String cpf) {
+	public Cliente buscarCliente(String cpf) throws CPFInvalidoException,
+			ClienteNaoCadastradoException {
 		return this.controlCliente.buscarCliente(cpf);
 
 	}
