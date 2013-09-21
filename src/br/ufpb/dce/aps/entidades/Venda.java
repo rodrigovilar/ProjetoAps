@@ -1,5 +1,6 @@
 package br.ufpb.dce.aps.entidades;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,6 +13,26 @@ public class Venda {
 	private List<Item> itens = new ArrayList<Item>();
 
 	private float valor;
+	
+	private Date dataVenda;
+	
+	private Date dataPagamento;
+
+	public Date getDataVenda() {
+		return dataVenda;
+	}
+
+	public void setDataVenda(Date dataVenda) {
+		this.dataVenda = dataVenda;
+	}
+
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
+
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
 
 	public String getIdVenda() {
 		return idVenda;

@@ -1,3 +1,4 @@
+
 package br.ufpb.dce.aps.controles;
 
 import br.ufpb.dce.aps.entidades.Cobranca;
@@ -23,6 +24,12 @@ public class ControleCobranca {
 		}
 	}
 
+	// A vista
+	public boolean pagarCobranca(Cobranca c){
+		
+		return false;
+	}
+	
 	public Cobranca exibirCobranca(String idVenda) {
 		return this.mapaDeCobranças.get(idVenda);
 	}

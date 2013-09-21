@@ -1,16 +1,16 @@
 package br.ufpb.dce.aps.teste;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import com.sun.imageio.plugins.common.I18N;
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 import br.ufpb.dce.aps.entidades.Cliente;
 import br.ufpb.dce.aps.entidades.Endereco;
@@ -61,6 +61,7 @@ public class TesteVenda {
 		this.venda.setValor(400);
 		this.venda.setItems(carrinhoDeCompras);
 		this.venda.setCliente(this.cliente);
+		this.venda.setDataVenda(new Date());
 		
 		this.ff = new FachadaFiado();
 		ff.vender(this.venda);
@@ -104,4 +105,12 @@ public class TesteVenda {
 	public void checkProduto(){
 		assertEquals(ff.buscarVenda(CODIGO_VENDA).getItems().get(0).getProduto(), this.item.getProduto());
 	}
+	@Test
+	
+	public void checkHora(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getHours()
+				, this.venda.getDataVenda().getHours());
+	}
+	
+	
 }
