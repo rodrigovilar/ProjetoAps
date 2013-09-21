@@ -16,18 +16,18 @@ public class TesteCliente {
 
 	private FachadaFiado ff;
 	// atributos para endereco e contato
-	
+
 	private Cliente c;
 	private Endereco e;
-	
+
 	@Before
 	public void setUp() throws ClienteJaCadastradoException {
 		ff = new FachadaFiado();
 		c = new Cliente();
-		e= new Endereco("1000" , "quinta Avenida", "centro", "longe de tudo");
-	
+		e = new Endereco("1000", "quinta Avenida", "centro", "longe de tudo");
+
 		this.c.setTelefone("234");
-		this.c.setCPF("09876543212") ;
+		this.c.setCPF("09876543212");
 		this.c.setNome("Vinicius");
 		this.c.setEndereco(e);
 
@@ -35,43 +35,42 @@ public class TesteCliente {
 		ff.cadastrarCliente(c);
 
 	}
-	
-	//testes com cadastros de clientes
-	
+
+	// testes com cadastros de clientes
+
 	@Test(expected = ClienteJaCadastradoException.class)
 	public void testCadastrarCliente() throws ClienteJaCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
-		
+
 		Cliente c2 = new Cliente();
 		c2.setNome("Cliente Teste");
 		c2.setCPF("12345678901");
 		ff.cadastrarCliente(c2);
-		
+
 		assertEquals(2, ff.listarClientes().size());
-		
+
 		Cliente c3 = new Cliente();
 		c3.setNome("Cliente já cadastrado");
 		c3.setCPF("12345678901");
 		ff.cadastrarCliente(c3);
-		
+
 		assertEquals(2, ff.listarClientes().size());
 	}
-	
 
-	
 	// testes no metodo remove
 	@Test
 	public void testRemoverCliente() {
 		assertEquals(1, ff.listarClientes().size());
-		
+
 		ff.removerCliente("12345678901");
 		assertEquals(1, ff.listarClientes().size());
-		
+
 		ff.removerCliente("09876543212");
 		assertEquals(0, ff.listarClientes().size());
 	}
+
 	@Test
-	public void removerClienteNaoCadastrado(){
+	public void removerClienteNaoCadastrado() {
 		assertFalse(ff.removerCliente("12312312312"));
 	}
 
@@ -82,21 +81,22 @@ public class TesteCliente {
 
 		assertNull(ff.buscarCliente("12345678901"));
 	}
+
 	@Test
-	public void buscarClienteInexistente(){
+	public void buscarClienteInexistente() {
 		assertNull(ff.buscarCliente("12312312312"));
 	}
-	
-	//teste no listar
+
+	// teste no listar
 	@Test
 	public void testListarClientes() {
 		assertEquals(1, ff.listarClientes().size());
-		
+
 		ff.removerCliente("09876543212");
-		
+
 		assertEquals(0, ff.listarClientes().size());
 	}
-	
+
 	// testes nos atributos
 	@Test
 	public void testeNomeDoCliente() {
@@ -110,19 +110,20 @@ public class TesteCliente {
 
 	@Test
 	public void testeTelefoneDoCliente() {
-		assertEquals(c.getTelefone(), ff.buscarCliente(c.getCPF()).getTelefone());
+		assertEquals(c.getTelefone(), ff.buscarCliente(c.getCPF())
+				.getTelefone());
 	}
 
 	@Test
 	public void testeRuaDoCliente() {
-		assertEquals(c.getEndereco().getRua(), ff.buscarCliente(c.getCPF()).getEndereco()
-				.getRua());
+		assertEquals(c.getEndereco().getRua(), ff.buscarCliente(c.getCPF())
+				.getEndereco().getRua());
 	}
 
 	@Test
 	public void testeNumeroDaCadaDoCliente() {
-		assertEquals(c.getEndereco().getNumero(), ff.buscarCliente(c.getCPF()).getEndereco()
-				.getNumero());
+		assertEquals(c.getEndereco().getNumero(), ff.buscarCliente(c.getCPF())
+				.getEndereco().getNumero());
 	}
 
 	@Test
@@ -132,14 +133,14 @@ public class TesteCliente {
 
 	@Test
 	public void testeBairroDoCliente() {
-		assertEquals(c.getEndereco().getBairro(), ff.buscarCliente(c.getCPF()).getEndereco()
-				.getBairro());
+		assertEquals(c.getEndereco().getBairro(), ff.buscarCliente(c.getCPF())
+				.getEndereco().getBairro());
 	}
 
 	@Test
 	public void testaReferenciaDoCliente() {
-		assertEquals(c.getEndereco().getReferencia(), ff.buscarCliente(c.getCPF()).getEndereco()
-				.getReferencia());
+		assertEquals(c.getEndereco().getReferencia(),
+				ff.buscarCliente(c.getCPF()).getEndereco().getReferencia());
 	}
 
 	@Test(expected = ClienteJaCadastradoException.class)
@@ -148,6 +149,5 @@ public class TesteCliente {
 		ff.cadastrarCliente(c);
 
 	}
-	
-	
+
 }
