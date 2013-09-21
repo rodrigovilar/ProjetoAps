@@ -62,6 +62,7 @@ public class TesteVenda {
 		this.venda.setItems(carrinhoDeCompras);
 		this.venda.setCliente(this.cliente);
 		this.venda.setDataVenda(new Date());
+		this.venda.setDataPagamento(new Date());
 		
 		this.ff = new FachadaFiado();
 		ff.vender(this.venda);
@@ -105,11 +106,59 @@ public class TesteVenda {
 	public void checkProduto(){
 		assertEquals(ff.buscarVenda(CODIGO_VENDA).getItems().get(0).getProduto(), this.item.getProduto());
 	}
-	@Test
 	
+	@Test	
 	public void checkHora(){
 		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getHours()
 				, this.venda.getDataVenda().getHours());
+	}
+	
+	@Test
+	public void checkMinutos(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getMinutes(), 
+				this.venda.getDataVenda().getMinutes());
+	}
+	
+	@Test
+	public void checkDia(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getDate(),
+				this.venda.getDataVenda().getDate());
+	}
+	
+	@Test
+	public void checkAno(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getYear(),
+				this.venda.getDataVenda().getYear());
+	}
+	
+	@Test
+	public void checkDiaDaSemana(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getDay(),
+				this.venda.getDataVenda().getDay());
+	}
+	
+	@Test
+	public void checkMes(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataVenda().getMonth(),
+				this.venda.getDataVenda().getMonth());
+	}
+	
+	@Test
+	public void checkDiaPagamento(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataPagamento().getDate(),
+				this.venda.getDataPagamento().getDate());
+	}
+	
+	@Test
+	public void checkMesPagamento(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataPagamento().getMonth(),
+				this.venda.getDataPagamento().getMonth());
+	}
+	
+	@Test
+	public void checkAnoPagamento(){
+		assertEquals(ff.buscarVenda(CODIGO_VENDA).getDataPagamento().getYear()
+				,this.venda.getDataPagamento().getYear());
 	}
 	
 	

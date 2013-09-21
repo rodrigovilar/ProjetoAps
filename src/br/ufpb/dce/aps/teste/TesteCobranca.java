@@ -2,6 +2,7 @@ package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -58,6 +59,8 @@ public class TesteCobranca {
 		this.venda.setCliente(this.cliente);
 		this.venda.setCliente(this.cliente);
 		this.venda.setValor(150);
+		this.venda.setDataPagamento(new Date());
+		this.venda.setDataVenda(new Date());
 
 		// cobranca
 		this.cobranca.setDataPagamento(null);
