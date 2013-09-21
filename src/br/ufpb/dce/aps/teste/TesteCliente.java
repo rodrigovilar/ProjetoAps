@@ -23,7 +23,7 @@ public class TesteCliente {
 
 	@Before
 	public void setUp() throws ClienteJaCadastradoException,
-			CPFInvalidoException, ClienteNaoCadastradoException {
+	CPFInvalidoException, ClienteNaoCadastradoException {
 		ff = new FachadaFiado();
 		c = new Cliente();
 		e = new Endereco("1000", "quinta Avenida", "centro", "longe de tudo");
@@ -42,7 +42,7 @@ public class TesteCliente {
 
 	@Test(expected = ClienteJaCadastradoException.class)
 	public void testCadastrarCliente() throws ClienteJaCadastradoException,
-			CPFInvalidoException, ClienteNaoCadastradoException {
+	CPFInvalidoException, ClienteNaoCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
 
 		Cliente c2 = new Cliente();
@@ -56,14 +56,17 @@ public class TesteCliente {
 		c3.setNome("Cliente já cadastrado");
 		c3.setCPF("12345678901");
 		ff.cadastrarCliente(c3);
+		
+		assertEquals(3, ff.listarClientes().size());
+	
 
-		assertEquals(2, ff.listarClientes().size());
+	
 	}
 
 	// testes no metodo remove
 	@Test
 	public void testRemoverCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException, ClienteJaCadastradoException {
+	ClienteNaoCadastradoException, ClienteJaCadastradoException {
 		Cliente cliente = new Cliente();
 		cliente.setCPF("12345678911");
 		ff.cadastrarCliente(cliente);
@@ -76,29 +79,29 @@ public class TesteCliente {
 
 	@Test(expected = ClienteNaoCadastradoException.class)
 	public void removerClienteNaoCadastrado() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(true, ff.removerCliente("12312312312"));
 	}
 
 	// testes em buscas
-	@Test(expected = ClienteNaoCadastradoException.class)
+	@Test
 	public void testBuscarCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c, ff.buscarCliente("09876543212"));
 
 		assertNull(ff.buscarCliente("12345678901"));
 	}
 
-	@Test(expected = ClienteNaoCadastradoException.class)
+	@Test
 	public void buscarClienteInexistente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertNull(ff.buscarCliente("12312312312"));
 	}
 
 	// teste no listar
 	@Test
 	public void testListarClientes() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
 
 		ff.removerCliente("09876543212");
@@ -109,53 +112,53 @@ public class TesteCliente {
 	// testes nos atributos
 	@Test
 	public void testeNomeDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getNome(), ff.buscarCliente(c.getCPF()).getNome());
 	}
 
 	@Test
 	public void testeCPFdoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getCPF(), ff.buscarCliente(c.getCPF()).getCPF());
 	}
 
 	@Test
 	public void testeTelefoneDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getTelefone(), ff.buscarCliente(c.getCPF())
 				.getTelefone());
 	}
 
 	@Test
 	public void testeRuaDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getRua(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getRua());
 	}
 
 	@Test
 	public void testeNumeroDaCadaDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getNumero(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getNumero());
 	}
 
 	@Test
 	public void testeClienteRemovido() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(true, ff.removerCliente(c.getCPF()));
 	}
 
 	@Test
 	public void testeBairroDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getBairro(), ff.buscarCliente(c.getCPF())
 				.getEndereco().getBairro());
 	}
 
 	@Test
 	public void testaReferenciaDoCliente() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		assertEquals(c.getEndereco().getReferencia(),
 				ff.buscarCliente(c.getCPF()).getEndereco().getReferencia());
 	}

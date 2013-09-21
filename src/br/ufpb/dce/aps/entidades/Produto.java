@@ -1,7 +1,6 @@
 package br.ufpb.dce.aps.entidades;
 
 public class Produto {
-
 	private String nome;
 
 	private String codigo;

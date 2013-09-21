@@ -36,6 +36,10 @@ public class FachadaFiado {
 	}
 
 	// controleCobranca
+	
+	public void pagarCobranca(String id){
+		this.controleCobranca.pagarCobranca(id);
+	}
 	public void addCobranca(Cobranca cobranca, String idVenda)
 			throws VendaException {
 		this.controleCobranca.addCobranca(cobranca, idVenda);

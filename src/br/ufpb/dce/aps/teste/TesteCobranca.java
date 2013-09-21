@@ -1,6 +1,7 @@
 package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Date;
 import java.util.List;
@@ -100,7 +101,7 @@ public class TesteCobranca {
 
 		// TODO
 		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente
-				.getCPF());
+				.getNome()); // nome?! Apenas numeros
 		assertEquals(1, lista.size());
 
 	}
@@ -110,5 +111,12 @@ public class TesteCobranca {
 	public void repetirVenda() {
 		this.ff.addCobranca(this.cobranca, this.venda.getIdVenda());
 	}
+	
+	@Test
+	public void pagar(){			
+			ff.pagarCobranca(this.venda.getIdVenda());	
+			assertNull(ff.buscarVenda(this.venda.getIdVenda()));
+	}
+
 
 }

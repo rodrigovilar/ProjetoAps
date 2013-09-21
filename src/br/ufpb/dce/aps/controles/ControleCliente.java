@@ -28,7 +28,7 @@ public class ControleCliente {
 	}
 
 	public Cliente buscarCliente(String cpf) throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		boolean teste = this.ehValido(cpf);
 		if (!teste)
 			throw new CPFInvalidoException("CPF inválido");
@@ -36,14 +36,11 @@ public class ControleCliente {
 			for (Cliente p : clientes)
 				if (p.getCPF() == cpf)
 					return p;
-				else
-					throw new ClienteNaoCadastradoException();
-
 		return null;
 	}
 
 	public boolean removerCliente(String CPF) throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException {
 		boolean teste = this.ehValido(CPF);
 		if (!teste)
 			throw new CPFInvalidoException("cpf inválido");
