@@ -28,11 +28,19 @@ public class DAO<T> {
 		m.remove(o);
 		m.getTransaction().commit();
 	}
+	public void atualizar(T t){
+		m.getTransaction().begin();
+		m.merge(t);
+		m.getTransaction().commit();
+	}
 	
 	public T procurar(String id){
 		return m.getReference(classe,id);
 	}
 	
+	public T procurar(T t){
+		return m.getReference(classe, t);
+	}
 	public List<T> listarTodos(){
 		return m.createQuery("select t from "+ classe.getName() +  " t").getResultList();
 	}
