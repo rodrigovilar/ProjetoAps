@@ -15,17 +15,17 @@ public class DAO<T> {
 		this.classe = classe;
 	}
 	
-	public void adicionar(Object o){
+	public void adicionar(T t){
 		// abre uma transação
 		m.getTransaction().begin();
-		m.persist(o);
+		m.persist(t);
 		m.getTransaction().commit();
 		
 	}
 	
-	public void remover(Object o){
+	public void remover(T t){
 		m.getTransaction().begin();
-		m.remove(o);
+		m.remove(t);
 		m.getTransaction().commit();
 	}
 	public void atualizar(T t){

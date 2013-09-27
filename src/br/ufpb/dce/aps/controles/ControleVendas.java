@@ -7,7 +7,7 @@ import br.ufpb.dce.aps.entidades.Venda;
 import br.ufpb.dce.aps.exception.VendaException;
 
 public class ControleVendas {
-
+	
 	private List<Venda> listaVendas = new LinkedList<Venda>();
 
 	public boolean vender(Venda venda) throws VendaException {

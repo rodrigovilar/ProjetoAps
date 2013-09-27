@@ -6,34 +6,12 @@ import javax.persistence.EntityManager;
 
 import br.ufpb.dce.aps.entidades.Cobranca;
 
-public class CobrancaDAO {
+public class CobrancaDAO extends DAO{
 
-	private final DAO <Cobranca> dao;
+	public CobrancaDAO(EntityManager m, Class classe) {
+		super(m, classe);
+		// TODO Auto-generated constructor stub
+	}
+
 	
-	public CobrancaDAO(EntityManager e){
-		dao = new DAO<Cobranca>(e , Cobranca.class);
-	}
-	
-	public void adicionar(Cobranca c){
-		this.dao.adicionar(c);
-	}
-	
-	public void remover(Cobranca c){
-		this.dao.remover(c);
-	}
-	
-	public Cobranca pesquisar(String id){
-		return this.dao.procurar(id);
-	}
-	public Cobranca pesquisar(Cobranca c){
-		return this.dao.procurar(c);
-	}
-	
-	public void atualizar(Cobranca c){
-		this.dao.atualizar(c);
-	}
-	
-	public List<Cobranca> listarTodos(){
-		return this.dao.listarTodos();
-	}
 }
