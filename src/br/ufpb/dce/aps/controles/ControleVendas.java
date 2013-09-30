@@ -1,37 +1,41 @@
 package br.ufpb.dce.aps.controles;
 
-import java.util.LinkedList;
 import java.util.List;
 
+import br.ufpb.dce.aps.dao.VendaDao;
 import br.ufpb.dce.aps.entidades.Venda;
 import br.ufpb.dce.aps.exception.VendaException;
+import br.ufpb.dce.aps.infra.JPAUtil;
 
 public class ControleVendas {
-	
-	private List<Venda> listaVendas = new LinkedList<Venda>();
+
+	private VendaDao dao;
+
+	public ControleVendas() {
+		dao = new VendaDao(JPAUtil.getInstance().getEntityManager(),
+				Venda.class);
+	}
 
 	public boolean vender(Venda venda) throws VendaException {
-		if (this.buscarVenda(venda.getIdVenda()) == null)
-			return this.listaVendas.add(venda);
-		else
-			// não pode vender duas vezes a mesma coisa
-			throw new VendaException("Venda Exception");
+		if (this.buscarVenda(venda.getIdVenda()) == null) {
+			this.dao.adicionar(venda);
+			return true;
+		}
+
+		// nï¿½o pode vender duas vezes a mesma coisa
+		throw new VendaException("Venda Exception");
 	}
 
 	public boolean removerVenda(String idVenda) {
-		return this.listaVendas.remove(this.buscarVenda(idVenda));
-
+		this.dao.remover(buscarVenda(idVenda));
+		return true;
 	}
 
 	public Venda buscarVenda(String idVenda) {
-		for (Venda venda : this.listaVendas)
-			if (venda.getIdVenda() == idVenda)
-				return venda;
-		return null;
+		return this.dao.procurar(idVenda);
 	}
 
 	public List<Venda> listarVendasRealizadas() {
-		return this.listaVendas;
+		return this.dao.listarTodos();
 	}
-
 }

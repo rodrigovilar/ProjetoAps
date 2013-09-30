@@ -1,7 +1,9 @@
 package br.ufpb.dce.aps.entidades;
-public class Endereco {
-	
 
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Endereco {
 	private String rua;
 
 	private String referencia;
@@ -10,12 +12,16 @@ public class Endereco {
 
 	private String bairro;
 
+	public Endereco() {
+
+	}
+
 	public Endereco(String numero, String rua, String bairro, String referencia) {
-		this.referencia=referencia;
-		this.rua=rua;
-		this.bairro=bairro;
-		this.numero=numero;
-		
+		this.referencia = referencia;
+		this.rua = rua;
+		this.bairro = bairro;
+		this.numero = numero;
+
 	}
 
 	public String getRua() {
@@ -50,5 +56,4 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
-	
 }

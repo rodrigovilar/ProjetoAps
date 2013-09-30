@@ -1,63 +1,77 @@
 package br.ufpb.dce.aps.controles;
 
-import java.util.LinkedList;
 import java.util.List;
 
+import br.ufpb.dce.aps.dao.ProdutoDao;
 import br.ufpb.dce.aps.entidades.Produto;
 import br.ufpb.dce.aps.exception.ProdutoJaCadastradoException;
 import br.ufpb.dce.aps.exception.ValorInvalidoException;
+import br.ufpb.dce.aps.infra.JPAUtil;
 
 public class ControleProduto {
-	private List<Produto> estoque = new LinkedList<Produto>();
+	private ProdutoDao dao;
+
+	public ControleProduto() {
+		dao = new ProdutoDao(JPAUtil.getInstance().getEntityManager(),
+				Produto.class);
+	}
 
 	public void cadastrarProduto(Produto p)
 			throws ProdutoJaCadastradoException, ValorInvalidoException {
 		boolean teste = this.ehValido(p.getNome(), p.getCodigo());
 
-		if (teste)
-			if (this.buscarProduto(p.getCodigo()) == null)
-				this.estoque.add(p);
+		if (teste) {
+			Produto prod = this.dao.procurar(p.getCodigo());
+			if (prod == null)
+				this.dao.adicionar(p);
 			else
 				throw new ProdutoJaCadastradoException("Produto ja existe");
-		else
+		} else
 			throw new ValorInvalidoException("valores invalidos");
 	}
 
 	public boolean removerProduto(String codigo) {
-		Produto p = this.buscarProduto(codigo);
-		return this.estoque.remove(p);
+		Produto p = null;
+		try {
+			p = this.buscarProduto(codigo);
+			System.out.println("/////////////////");
+			System.out.println(p);
+			System.out.println("/////////////////");
+			if (p != null) {
+				this.dao.remover(p);
+				return true;
+			}
+			return false;
+		} catch (ValorInvalidoException vi) {
+			return false;
+		}
 	}
 
 	public Produto buscarProduto(String codigo) throws ValorInvalidoException {
 		if (!this.ehValido(codigo))
 			throw new ValorInvalidoException("valor invalido");
-		else {
-			for (Produto p : estoque)
-				if (p.getCodigo() == codigo)
-					return p;
-			return null;
-		}
+
+		return this.dao.procurar(codigo);
 	}
 
 	public int getNumeroDeProdutos() {
-		return this.estoque.size();
+		return this.dao.listarTodos().size();
 	}
 
 	public List<Produto> exibirEstoqueDeProdutos() {
-		if (!this.estoque.isEmpty())
-			return this.estoque;
-		return null;
+		return this.dao.listarTodos();
 	}
 
 	private boolean ehValido(String nome, String codigo) {
-		// testador de entrada de parâmetros
-		if ((nome.matches("[A-Za-z]{" + nome.length() + "}")) && (codigo.matches("[0-9]{" + codigo.trim().length() + "}")))
+		// testador de entrada de parï¿½metros
+		if ((nome.matches("[A-Za-z]{" + nome.trim().length() + "}"))
+				&& (codigo.matches("[0-9]{" + codigo.trim().length() + "}")))
 			return true;
 		return false;
 	}
 
 	private boolean ehValido(String codigo) {
-		// testador de entrada de parâmetros para busca e remoção
+		// testador de entrada de parï¿½metros para busca e remoï¿½ï¿½o
 		if ((codigo.matches("[0-9]{" + codigo.length() + "}")))
 			return true;
 		return false;

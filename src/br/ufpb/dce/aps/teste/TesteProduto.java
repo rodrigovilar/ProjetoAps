@@ -14,7 +14,7 @@ import br.ufpb.dce.aps.fachada.FachadaFiado;
 
 public class TesteProduto {
 
-	public static final String CODIGO_CADASTRADO = "12"; 
+	public static final String CODIGO_CADASTRADO = "12";
 	FachadaFiado ff;
 	Produto p;
 
@@ -23,83 +23,82 @@ public class TesteProduto {
 	 */
 	@Before
 	public void setUp() {
-		
-		p= new Produto();
+
+		p = new Produto();
 		p.setCodigo(CODIGO_CADASTRADO);
 		p.setNome("Nal");
 		p.setPreco(200);
 
 		ff = new FachadaFiado();
-		ff.cadastrarProduto(p);
+
+		try {
+			ff.cadastrarProduto(p);
+		} catch (ProdutoJaCadastradoException pj) {
+
+		}
 
 	}
 
 	@Test
 	public void verSeOProdutoEstaCadastrado() {
-		assertEquals(p, ff.buscarProduto(p.getCodigo()));
-
+		assertEquals(p.getCodigo(), ff.buscarProduto(p.getCodigo()).getCodigo());
 	}
+
 	@Test
-	public void checkQuantidadeDeItens(){
+	public void checkQuantidadeDeItens() {
 		assertEquals(ff.getNumeroDeProdutos(), 1);
-		
-		p= new Produto();
+
+		p = new Produto();
 		p.setCodigo("1");
 		p.setNome("duza");
 		p.setPreco(100);
-		
+
 		ff.cadastrarProduto(p);
-		
+
 		assertEquals(ff.getNumeroDeProdutos(), 2);
+		ff.removerProduto("1");
 	}
-	
+
 	@Test
-	public void checkProdutoNaoCadastrado(){
+	public void checkProdutoNaoCadastrado() {
 		assertNull(ff.buscarProduto("321"));
 	}
-	
+
 	@Test
-	public void checkRemoverProduto(){
-		ff.removerProduto(CODIGO_CADASTRADO);
-		assertNull(ff.buscarProduto(CODIGO_CADASTRADO));
-	}
-	
-	@Test
-	public void removerProdutoInexistente(){
-		assertFalse(ff.removerProduto("1"));
-	}
-	
-	
-	@Test
-	public void verNumeroDeprodutos(){
-		assertEquals(ff.exibirEstoqueDeProdutos().size(), 1);
-		
-		p=new Produto();
-		p.setCodigo("13");
+	public void checkRemoverProduto() {
+		p = new Produto();
+		p.setCodigo("1");
 		p.setNome("duza");
-		p.setPreco(140);
+		p.setPreco(100);
+
+		assertEquals(ff.getNumeroDeProdutos(), 1);
 		ff.cadastrarProduto(p);
+		assertEquals(ff.getNumeroDeProdutos(), 2);
+		ff.removerProduto("1");
 		
-		assertEquals(ff.exibirEstoqueDeProdutos().size(), 2);
+		assertNull(ff.buscarProduto("1"));
 	}
-	
+
 	@Test
-	public void testEstoque(){
-		assertEquals(ff.exibirEstoque().get(0), p);
+	public void removerProdutoInexistente() {
+		assertFalse(ff.removerProduto("11"));
 	}
-	
+
+	@Test
+	public void testEstoque() {
+		assertEquals(ff.exibirEstoque().get(0).getCodigo(), p.getCodigo());
+	}
 
 	// check atributos
 	@Test
 	public void verSeProdutoTemNome() {
-		assertEquals(p.getNome(), ff.buscarProduto(p.getCodigo())
-				.getNome());
+		assertEquals(p.getNome(), ff.buscarProduto(p.getCodigo()).getNome());
 	}
 
 	@Test
 	public void verificaPrecoDoProduto() {
-		assertEquals(p.getPreco(), ff.buscarProduto(p.getCodigo())
-				.getPreco(), 0.1);
+		assertEquals(p.getPreco(), ff.buscarProduto(p.getCodigo()).getPreco(),
+				0.1);
 	}
 
 	@Test
@@ -112,14 +111,15 @@ public class TesteProduto {
 		ff.cadastrarProduto(p);
 
 	}
-	
-	@Test   (expected = ValorInvalidoException.class)
-	public void excecaoDeNomeComNumeros(){
+
+	@Test(expected = ValorInvalidoException.class)
+	public void excecaoDeNomeComNumeros() {
 		p.setNome("987");
 		ff.cadastrarProduto(p);
 	}
-	@Test (expected = ValorInvalidoException.class)
-	public void excecaoDeCodigoComLetras(){
+
+	@Test(expected = ValorInvalidoException.class)
+	public void excecaoDeCodigoComLetras() {
 		p.setCodigo("abs");
 		ff.cadastrarProduto(p);
 	}

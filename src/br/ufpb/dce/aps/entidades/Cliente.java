@@ -1,12 +1,18 @@
 package br.ufpb.dce.aps.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Cliente {
+	@Id
+	private String CPF;
 
 	private String nome;
+
 	private Endereco endereco;
+
 	private String telefone;
-	private String CPF;
 
 	public String getNome() {
 		return nome;
@@ -24,7 +30,6 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -32,14 +37,13 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
-	public String getCPF(){
+
+	public String getCPF() {
 		return this.CPF;
 	}
 
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
-	
 
 }

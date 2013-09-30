@@ -1,9 +1,14 @@
 package br.ufpb.dce.aps.entidades;
 
-public class Produto {
-	private String nome;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Produto {
+	@Id
 	private String codigo;
+	
+	private String nome;
 
 	private float preco;
 
@@ -34,13 +39,14 @@ public class Produto {
 	public String toString() {
 		return this.nome + " " + this.codigo + "\n";
 	}
-	
+
 	@Override
-	public boolean equals(Object o){
+	public boolean equals(Object o) {
 		Produto p = (Produto) o;
-		if((this.codigo == p.codigo) && (this.nome == p.nome) && (this.preco == p.preco))
+		if ((this.codigo == p.codigo) && (this.nome == p.nome)
+				&& (this.preco == p.preco))
 			return true;
-		
+
 		return false;
 	}
 }

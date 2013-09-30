@@ -9,9 +9,7 @@ public class JPAUtil {
 	private static EntityManagerFactory entityManagerFactory = Persistence
 			.createEntityManagerFactory("aps_pu");
 
-	private JPAUtil() {
-		this.jpaUtil = new JPAUtil();
-	}
+	private JPAUtil() { }
 
 	public EntityManager getEntityManager() {
 		return entityManagerFactory.createEntityManager();
