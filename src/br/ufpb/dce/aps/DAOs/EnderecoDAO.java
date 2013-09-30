@@ -2,9 +2,11 @@ package br.ufpb.dce.aps.DAOs;
 
 import javax.persistence.EntityManager;
 
-public class EnderecoDAO extends DAO {
+import br.ufpb.dce.aps.entidades.Endereco;
 
-	public EnderecoDAO(EntityManager m, Class classe) {
+public class EnderecoDAO extends DAO<Endereco> {
+
+	public EnderecoDAO(EntityManager m, Class <Endereco>classe) {
 		super(m, classe);
 		// TODO Auto-generated constructor stub
 	}

@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 
 import br.ufpb.dce.aps.entidades.Cobranca;
 
-public class CobrancaDAO extends DAO{
+public class CobrancaDAO extends DAO<Cobranca>{
 
-	public CobrancaDAO(EntityManager m, Class classe) {
+	public CobrancaDAO(EntityManager m, Class<Cobranca> classe) {
 		super(m, classe);
 		// TODO Auto-generated constructor stub
 	}

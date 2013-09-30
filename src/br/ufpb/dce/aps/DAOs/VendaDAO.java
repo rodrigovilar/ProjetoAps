@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 
 import br.ufpb.dce.aps.entidades.Venda;
 
-public class VendaDAO extends DAO {
+public class VendaDAO extends DAO <Venda>{
 
-	public VendaDAO(EntityManager m, Class classe) {
+	public VendaDAO(EntityManager m, Class <Venda> classe) {
 		super(m, classe);
 		// TODO Auto-generated constructor stub
 	}
