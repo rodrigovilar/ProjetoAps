@@ -20,7 +20,8 @@ public class Venda {
 
 	@ManyToOne
 	private Cliente cliente;
-
+	
+	// mappedby so com relacionamento bidirecional
 	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
 	private List<Item> itens = new ArrayList<Item>();
 
