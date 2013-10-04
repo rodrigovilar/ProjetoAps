@@ -56,7 +56,6 @@ public class TesteVenda {
 		this.item = new Item();
 		this.item.setProduto(this.produto);
 		this.item.setQuantidade(20);
-		this.item.setVenda(venda);
 
 		this.venda.setIdVenda(this.CODIGO_VENDA);
 		this.venda.setValor(400);
@@ -67,20 +66,21 @@ public class TesteVenda {
 
 		try {
 			ff.cadastrarCliente(cliente);
+		} catch (ClienteJaCadastradoException cj) { }
+		
+		try{
 			ff.cadastrarProduto(produto);
+		}catch(ProdutoJaCadastradoException pj) { }
+		
+		try {
 			ff.vender(this.venda);
-		} catch (ClienteJaCadastradoException cj) {
-
-		} catch (ProdutoJaCadastradoException pj) {
-
-		} catch (VendaException ve) {
-
-		}
+		}catch (VendaException ve) { }
 	}
 
 	@Test
 	public void checkVendaRealizada() {
-		assertEquals(this.venda, ff.buscarVenda(venda.getIdVenda()));
+		assertEquals(this.venda.getIdVenda()
+				, ff.buscarVenda(venda.getIdVenda()).getIdVenda());
 	}
 
 	@Test
@@ -91,6 +91,7 @@ public class TesteVenda {
 
 	@Test
 	public void listarVendas() {
+		System.out.println(ff.listarVendasRalizadas().size());
 		assertEquals(ff.buscarVenda(this.CODIGO_VENDA), ff
 				.listarVendasRalizadas().get(0));
 	}
@@ -105,12 +106,17 @@ public class TesteVenda {
 
 	@Test
 	public void checkCliente() {
-		assertEquals(ff.buscarVenda(this.CODIGO_VENDA).getCliente(),
-				this.cliente);
+		assertEquals(ff.buscarVenda(this.CODIGO_VENDA).getCliente().getNome(),
+				this.cliente.getNome());
 	}
 
 	@Test
 	public void checkPreco() {
+		Venda v = ff.buscarVenda(CODIGO_VENDA);
+		System.out.println("//////////////");
+		System.out.println("Venda: " + v);
+		System.out.println("Preço: " + v.getValor());
+		System.out.println("//////////////");
 		assertEquals(ff.buscarVenda(this.CODIGO_VENDA).getValor(),
 				this.venda.getValor(), 0.1);
 	}
@@ -118,7 +124,7 @@ public class TesteVenda {
 	@Test
 	public void checkProduto() {
 		assertEquals(ff.buscarVenda(CODIGO_VENDA).getItems().get(0)
-				.getProduto(), this.item.getProduto());
+				.getProduto().getCodigo(), this.item.getProduto().getCodigo());
 	}
 
 	@Test

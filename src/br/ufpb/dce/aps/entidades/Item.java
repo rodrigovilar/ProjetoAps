@@ -14,10 +14,7 @@ public class Item {
 
 	private int quantidade;
 
-	@ManyToOne
-	@JoinColumn(name = "venda_id")
-	private Venda venda;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
@@ -38,13 +35,7 @@ public class Item {
 		this.id = id;
 	}
 
-	public Venda getVenda() {
-		return venda;
-	}
-
-	public void setVenda(Venda venda) {
-		this.venda = venda;
-	}
+	
 
 	public Produto getProduto() {
 		return produto;

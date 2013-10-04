@@ -26,11 +26,11 @@ public class TesteCliente {
 			CPFInvalidoException, ClienteNaoCadastradoException {
 		ff = new FachadaFiado();
 		c = new Cliente();
-		e = new Endereco("1000", "quinta Avenida", "centro", "longe de tudo");
+		e = new Endereco("12", "Rua", "Bairro", "referencia");
 
-		this.c.setTelefone("234");
-		this.c.setCPF("09876543212");
-		this.c.setNome("Vinicius");
+		this.c.setTelefone("098909879");
+		this.c.setCPF("12345678901");
+		this.c.setNome("duza");
 		this.c.setEndereco(e);
 
 		// cadastrando cliente
@@ -102,7 +102,7 @@ public class TesteCliente {
 			ClienteNaoCadastradoException {
 		assertEquals(1, ff.listarClientes().size());
 
-		ff.removerCliente("09876543212");
+		ff.removerCliente("12345678901");
 		assertEquals(0, ff.listarClientes().size());
 	}
 

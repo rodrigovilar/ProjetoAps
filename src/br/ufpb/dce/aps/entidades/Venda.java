@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -22,15 +23,15 @@ public class Venda {
 	private Cliente cliente;
 	
 	// mappedby so com relacionamento bidirecional
-	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL) @JoinColumn(name = "itemID") //(mappedBy = "venda", cascade = CascadeType.ALL)
 	private List<Item> itens = new ArrayList<Item>();
 
 	private float valor;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataVenda;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPagamento;
 
 	public Date getDataVenda() {

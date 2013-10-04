@@ -37,6 +37,7 @@ public class Dao<T> {
 
 	public T procurar(String id) {
 		try {
+			System.out.println("\n\nTRY\n\n");
 			return manager.find(classe, id);
 		} catch (EntityNotFoundException e) {
 			return null;
