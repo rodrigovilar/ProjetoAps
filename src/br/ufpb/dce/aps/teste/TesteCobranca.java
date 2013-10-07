@@ -1,7 +1,7 @@
 package br.ufpb.dce.aps.teste;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
@@ -43,11 +43,11 @@ public class TesteCobranca {
 		this.produto = new Produto();
 		this.cliente = new Cliente();
 
-		Endereco e = new Endereco("13", "mangueira", "sifu", null);
+		Endereco e = new Endereco("12", "Rua", "Bairro", "referencia");
 
 		// produto
-		this.produto.setCodigo("12343");
-		this.produto.setNome("sabao");
+		this.produto.setCodigo("12");
+		this.produto.setNome("Sabao");
 		this.produto.setPreco(12);
 
 		try {
@@ -61,10 +61,11 @@ public class TesteCobranca {
 		this.item.setQuantidade(5);
 
 		// cliente
-		this.cliente.setCPF("75315945682");
+		
+		this.cliente.setCPF("12345678901");
 		this.cliente.setEndereco(e);
 		this.cliente.setNome("Vinicius");
-		this.cliente.setTelefone("09093392");
+		this.cliente.setTelefone("098909879");
 
 		try {
 			ff.cadastrarCliente(cliente);
@@ -73,10 +74,9 @@ public class TesteCobranca {
 		}
 
 		// venda
-		this.venda.setIdVenda("123432");
+		this.venda.setIdVenda("1");
 		this.venda.setCliente(this.cliente);
-		this.venda.setCliente(this.cliente);
-		this.venda.setValor(150);
+		this.venda.setValor(400);
 		this.venda.setDataPagamento(new Date());
 		this.venda.setDataVenda(new Date());
 
@@ -104,8 +104,8 @@ public class TesteCobranca {
 	//
 	@Test
 	public void checkCobranca() {
-		// assertEquals(this.cobranca,
-		// this.ff.exibirCobranca(this.venda.getIdVenda()));
+		assertEquals(this.cobranca.getId(),
+				this.ff.exibirCobranca(this.cobranca.getId()).getId());
 
 	}
 
@@ -119,7 +119,7 @@ public class TesteCobranca {
 	public void checkDebitosDoCliente() {
 		List<Cobranca> lista = this.ff.listarDebitosDoCliente(this.cliente
 				.getCPF());
-		assertEquals(this.cobranca, lista.get(0));
+		assertEquals(this.cobranca.getId(), lista.get(0).getId());
 	}
 
 	@Test(expected = ValorInvalidoException.class)
@@ -140,7 +140,7 @@ public class TesteCobranca {
 	@Test
 	public void pagar() {
 		ff.pagarCobranca("1");
-		assertNull(ff.buscarVenda("1"));
+		assertTrue(ff.exibirCobranca("1").isPagamentoEfetuado());
 	}
 
 }

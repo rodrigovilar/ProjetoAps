@@ -30,7 +30,7 @@ public class TesteCliente {
 
 		this.c.setTelefone("098909879");
 		this.c.setCPF("12345678901");
-		this.c.setNome("duza");
+		this.c.setNome("Vinicius");
 		this.c.setEndereco(e);
 
 		// cadastrando cliente

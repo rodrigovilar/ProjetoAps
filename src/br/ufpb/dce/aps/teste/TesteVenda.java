@@ -29,8 +29,8 @@ public class TesteVenda {
 	private Endereco endereco;
 	private Cliente cliente;
 
-	public static final String CODIGO_PRODUTO = "1";
-	public static final String CODIGO_VENDA = "naifu";
+	public static final String CODIGO_PRODUTO = "12";
+	public static final String CODIGO_VENDA = "1";
 	public static final String CPF = "12345678901";
 
 	@Before
@@ -38,18 +38,18 @@ public class TesteVenda {
 			ClienteNaoCadastradoException {
 		this.ff = new FachadaFiado();
 
-		this.endereco = new Endereco("12", "Rua", "Bairro", "referencia");
+		endereco = new Endereco("12", "Rua", "Bairro", "referencia");
 
 		this.cliente = new Cliente();
 		this.cliente.setCPF(CPF);
-		this.cliente.setNome("duza");
+		this.cliente.setNome("Vinicius");
 		this.cliente.setTelefone("098909879");
 		this.cliente.setEndereco(this.endereco);
 
 		this.produto = new Produto();
 		this.produto.setCodigo(this.CODIGO_PRODUTO);
-		this.produto.setNome("NAL");
-		this.produto.setPreco(100);
+		this.produto.setNome("Sabao");
+		this.produto.setPreco(12);
 
 		this.venda = new Venda();
 
@@ -89,7 +89,8 @@ public class TesteVenda {
 		assertNull(ff.buscarVenda(this.CODIGO_VENDA));
 	}
 
-	@Test
+	@Test /* o before cria um novo objeto com mesma caracterisca. 
+	Logo ele não ta comparando os mesmos objetos */
 	public void listarVendas() {
 		System.out.println(ff.listarVendasRalizadas().size());
 		assertEquals(ff.buscarVenda(this.CODIGO_VENDA), ff

@@ -34,9 +34,6 @@ public class ControleProduto {
 		Produto p = null;
 		try {
 			p = this.buscarProduto(codigo);
-			System.out.println("/////////////////");
-			System.out.println(p);
-			System.out.println("/////////////////");
 			if (p != null) {
 				this.dao.remover(p);
 				return true;

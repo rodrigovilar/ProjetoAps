@@ -49,21 +49,14 @@ public class ControleCobranca {
 	public List<Cobranca> listarDebitosDeCliente(String CPF)
 			throws ValorInvalidoException {
 		
-		System.out.println("//////////////////////////");
-		System.out.println(CPF.trim().matches("[0-9]{11}") && CPF.length() == 11);
-		System.out.println("//////////////////////////");
-
 		if (CPF.trim().matches("[0-9]{11}") && CPF.length() == 11) {
 			List<Cobranca> lista = new LinkedList<Cobranca>();
 			for (Cobranca c : this.dao.listarTodos())
-				if (c.getVenda().getCliente().getCPF() == CPF)
+				if (c.getVenda().getCliente().getCPF().equals(CPF))
 					lista.add(c);
+			
 			return lista;
 		}
-
-		System.out.println("//////////////////////////");
-		System.out.println(CPF.trim().matches("[0-9]{11}") && CPF.length() == 11);
-		System.out.println("//////////////////////////");
 		throw new ValorInvalidoException("CPF inv�lido");
 	}
 }

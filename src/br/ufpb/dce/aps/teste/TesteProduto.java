@@ -26,8 +26,8 @@ public class TesteProduto {
 
 		p = new Produto();
 		p.setCodigo(CODIGO_CADASTRADO);
-		p.setNome("Nal");
-		p.setPreco(200);
+		p.setNome("Sabao");
+		p.setPreco(12);
 
 		ff = new FachadaFiado();
 
