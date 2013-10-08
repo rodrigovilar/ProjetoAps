@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,11 +51,7 @@ public class TesteCobranca {
 		this.produto.setNome("Sabao");
 		this.produto.setPreco(12);
 
-		try {
-			ff.cadastrarProduto(produto);
-		} catch (ProdutoJaCadastradoException pj) {
-
-		}
+		ff.cadastrarProduto(produto);
 
 		// item
 		this.item.setProduto(this.produto);
@@ -67,11 +64,7 @@ public class TesteCobranca {
 		this.cliente.setNome("Vinicius");
 		this.cliente.setTelefone("098909879");
 
-		try {
-			ff.cadastrarCliente(cliente);
-		} catch (ClienteJaCadastradoException cj) {
-
-		}
+		ff.cadastrarCliente(cliente);
 
 		// venda
 		this.venda.setIdVenda("1");
@@ -79,12 +72,9 @@ public class TesteCobranca {
 		this.venda.setValor(400);
 		this.venda.setDataPagamento(new Date());
 		this.venda.setDataVenda(new Date());
-
-		try {
-			ff.vender(venda);
-		} catch (VendaException ve) {
-
-		}
+		this.venda.getItems().add(this.item);
+		
+		ff.vender(venda);
 
 		// cobranca
 		this.cobranca.setId("1");
@@ -94,11 +84,15 @@ public class TesteCobranca {
 
 		// cadastrar cobran�a
 
-		try {
-			this.ff.addCobranca(this.cobranca, this.venda.getIdVenda());
-		} catch (VendaException ve) {
-
-		}
+		this.ff.addCobranca(this.cobranca, this.venda.getIdVenda());
+	}
+	
+	@After
+	public void Desfazer() throws CPFInvalidoException, ClienteNaoCadastradoException{
+		ff.pagarCobranca(cobranca.getId());
+		ff.removerVenda(venda.getIdVenda());
+		ff.removerCliente(cliente.getCPF());
+		ff.removerProduto(produto.getCodigo());
 	}
 
 	//

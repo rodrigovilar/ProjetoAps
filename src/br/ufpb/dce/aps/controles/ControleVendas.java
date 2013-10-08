@@ -27,7 +27,10 @@ public class ControleVendas {
 	}
 
 	public boolean removerVenda(String idVenda) {
-		this.dao.remover(buscarVenda(idVenda));
+		Venda venda = buscarVenda(idVenda);
+		
+		
+		this.dao.remover(venda);
 		return true;
 	}
 

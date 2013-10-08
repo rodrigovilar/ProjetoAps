@@ -6,11 +6,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Item {
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	@ManyToOne
+	@JoinColumn
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Venda venda;
+
+	
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
 
 	private int quantidade;
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.Date;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,7 +36,7 @@ public class TesteVenda {
 
 	@Before
 	public void setUp() throws CPFInvalidoException,
-			ClienteNaoCadastradoException {
+	ClienteNaoCadastradoException, ClienteJaCadastradoException {
 		this.ff = new FachadaFiado();
 
 		endereco = new Endereco("12", "Rua", "Bairro", "referencia");
@@ -56,6 +57,7 @@ public class TesteVenda {
 		this.item = new Item();
 		this.item.setProduto(this.produto);
 		this.item.setQuantidade(20);
+		this.item.setVenda(this.venda);
 
 		this.venda.setIdVenda(this.CODIGO_VENDA);
 		this.venda.setValor(400);
@@ -63,18 +65,31 @@ public class TesteVenda {
 		this.venda.setCliente(this.cliente);
 		this.venda.setDataVenda(new Date());
 		this.venda.setDataPagamento(new Date());
+		try{
+			ff.cadastrarCliente(cliente);
+		}catch(ClienteJaCadastradoException e){
+
+		}
+		ff.cadastrarProduto(produto);
+
+		ff.vender(this.venda);
+	}
+
+	@After
+	public void limparBD() throws CPFInvalidoException, ClienteNaoCadastradoException{
 
 		try {
-			ff.cadastrarCliente(cliente);
-		} catch (ClienteJaCadastradoException cj) { }
-		
-		try{
-			ff.cadastrarProduto(produto);
-		}catch(ProdutoJaCadastradoException pj) { }
-		
-		try {
-			ff.vender(this.venda);
-		}catch (VendaException ve) { }
+			ff.removerVenda(CODIGO_VENDA);
+		} catch (Exception e) {}
+
+		try {		
+			ff.removerProduto(CODIGO_PRODUTO);
+		} catch (Exception e) {}
+
+		try {		
+			ff.removerCliente(CPF);
+		} catch (Exception e) {}
+
 	}
 
 	@Test

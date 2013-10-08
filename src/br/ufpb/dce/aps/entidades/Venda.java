@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Venda {
 
@@ -23,6 +26,7 @@ public class Venda {
 	private Cliente cliente;
 	
 	// mappedby so com relacionamento bidirecional
+	
 	@OneToMany(cascade=CascadeType.ALL) @JoinColumn(name = "itemID") //(mappedBy = "venda", cascade = CascadeType.ALL)
 	private List<Item> itens = new ArrayList<Item>();
 
