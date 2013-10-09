@@ -129,10 +129,6 @@ public class TesteVenda {
 	@Test
 	public void checkPreco() {
 		Venda v = ff.buscarVenda(CODIGO_VENDA);
-		System.out.println("//////////////");
-		System.out.println("Venda: " + v);
-		System.out.println("Preço: " + v.getValor());
-		System.out.println("//////////////");
 		assertEquals(ff.buscarVenda(this.CODIGO_VENDA).getValor(),
 				this.venda.getValor(), 0.1);
 	}
